@@ -37,7 +37,7 @@ This tool automates the deployment or execution of configurations during logon o
 &nbsp;
 
 # 🔜 Roadmap
-- TBA
+- Convert the `Config.xml` file to a JSON file format `Config.JSON`
   
 &nbsp;
 
