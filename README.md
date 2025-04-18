@@ -9,8 +9,17 @@ This tool automates the deployment or execution of configurations during logon o
 
 &nbsp;
 
+# 📺 Demo
+
+Watch the video on Youtube
+
+[![Watch the video on Youtube](https://i.ytimg.com/vi/BE4vtI_WJGE/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLC1hCvaNLwTVhb9RM0J46CS5sLsYw)](https://youtu.be/BE4vtI_WJGE)
+
+&nbsp;
+
 # 📑 Contents
 - [🔧 ENVOY - Lightweight User Environment Manager](#-envoy---lightweight-user-environment-manager)
+- [📺 Demo](#-demo)
 - [📑 Contents](#-contents)
 - [🚀 Core Components](#-core-components)
 - [🔜 Roadmap](#-roadmap)
@@ -31,13 +40,13 @@ This tool automates the deployment or execution of configurations during logon o
 # 🚀 Core Components
 
 - **Microsoft Graph Authentication**: The script uses the `Microsoft.Graph` modules to interact with Microsoft Graph APIs.
-- **Configuration File**: Reads settings from `Config.xml` located at `C:\ProgramData\Envoy\Config.xml`.
+- **Configuration File**: Reads settings from `Config.json` located at `C:\ProgramData\Envoy\Config.json`.
 - **Authentication**: Connects to Microsoft Graph using `TenantId`, `AppId`, and `AppSecret` from the configuration file.
 
 &nbsp;
 
 # 🔜 Roadmap
-- Convert the `Config.xml` file to a JSON file format `Config.JSON`
+- TBA
   
 &nbsp;
 
@@ -56,7 +65,7 @@ This tool automates the deployment or execution of configurations during logon o
 **Purpose**: Maps or removes network drives based on configuration.
 
 **Key Features:**
-  - Reads drive mapping configurations from `Config.xml`.
+  - Reads drive mapping configurations from `Config.json`.
   - Checks user group memberships to determine eligibility.
   - Supports adding and removing drive mappings.
   - Logs success or failure of each operation.
@@ -91,7 +100,7 @@ This tool automates the deployment or execution of configurations during logon o
 **Purpose:**  Adds or removes registry keys based on configuration.
 
 **Key Features:**
-  - Reads registry configurations from `Config.xml`.
+  - Reads registry configurations from `Config.json`.
   - Checks user group memberships to determine eligibility.
   - Ensures registry keys exist before setting values.
   - Supports adding and removing registry keys.
@@ -126,7 +135,7 @@ This tool automates the deployment or execution of configurations during logon o
 **Purpose:** Starts executables with optional arguments based on configuration.
 
 **Key Features:**
-  - Reads executable configurations from `Config.xml`.
+  - Reads executable configurations from `Config.json`.
   - Checks user group memberships to determine eligibility.
   - Supports starting executables with or without arguments.
   - Logs success or failure of each operation.
@@ -154,7 +163,7 @@ This tool automates the deployment or execution of configurations during logon o
 **Purpose:** Performs file operations (copy, delete, rename, move) based on configuration.
 
 **Key Features:**
-  - Reads file action configurations from `Config.xml`.
+  - Reads file action configurations from `Config.json`.
   - Checks user group memberships to determine eligibility.
   - Supports the following actions:
     - Copy: Copies files to a destination.
@@ -204,7 +213,7 @@ This tool automates the deployment or execution of configurations during logon o
 **Purpose:** Adds or removes printers based on configuration.
 
 **Key Features:**
-  - Reads printer configurations from `Config.xml`.
+  - Reads printer configurations from `Config.json`.
   - Checks user group memberships to determine eligibility.
   - Supports adding and removing printers.
   - Logs success or failure of each operation.
