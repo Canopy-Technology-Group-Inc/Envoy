@@ -72,27 +72,39 @@ Watch the video on Youtube
   - Priority handling for situations with conflicting actions (e.g. same drive letters).
 
 &nbsp;
+
 **Example:**
 ```
-    <Drives>
-        <Drive>
-            <DriveLetter>X</DriveLetter> <!-- Drive letter to assign -->
-            <UNCPath>\\server.file.core.windows.net\marketing</UNCPath> <!-- UNC path to the share -->
-            <Group>GG - File Share Marketing</Group> <!-- Group that should have access to the drive. Leave empty for everyone -->
-            <Description>Marketing Drive</Description> <!-- Description for the drive -->
-            <Priority>1</Priority> <!-- Priority handling for conflicts. 1 is lowest. Higher wins -->
-            <Action>add</Action> <!-- add or remove -->
-        </Drive>
-        <Drive>
-            <DriveLetter>Y</DriveLetter> <!-- Drive letter to assign -->
-            <UNCPath>\\server.file.core.windows.net\sales</UNCPath> <!-- UNC path to the share -->
-            <Group>GG - File Share Sales</Group> <!-- Group that should have access to the drive. Leave empty for everyone -->
-            <Description>Sales Drive</Description> <!-- Description for the drive -->
-            <Priority>2</Priority> <!-- Priority handling for conflicts. 1 is lowest. Higher wins -->
-            <Action>add</Action> <!-- add or remove -->
-        </Drive>       
-    </Drives>
+"Drives": [
+      {
+        "DriveLetter": "X",
+        "UNCPath": "\\\\storageaccount.file.core.windows.net\\share1",
+        "Group": "GG - Share 1",
+        "Description": "Test Drive",
+        "Priority": 1,
+        "Action": "add"
+      },
+      {
+        "DriveLetter": "Y",
+        "UNCPath": "\\\\fileserver\\share2",
+        "Group": "GG - Share 2",
+        "Description": "Test Drive 2",
+        "Priority": 1,
+        "Action": "add"
+      }
+    ],
 ```
+
+**Usage:**
+| Setting           | Values      | Description  | 
+|------------------|-----|-----------------------|
+| DriveLetter      | x,y,z, etc.  | Configure the desired drive mapping letter.                   |
+| UNCPath           |\\\\server.domain.local\\share  | Configure the desired UNC path. Don't forget double slashes for JSON |
+| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will receive this drive mapping. Leave the group empty for "everyone". |
+| Description | Text | Fill in a description. E.g. Sales Drive, Markering Team. |
+| Priority | 1,2,3,4,5,6, etc | Conflicts with drive mappings can occur if a user is a member of multiple groups with the same drive letter as result. |Prio 1 is the lowest, higher winns. |
+| Action | Add or Remove | Define the action for the drive mapping |
+
 &nbsp;
 
 ### 📘 Deploy-RegistryKeys
@@ -107,27 +119,39 @@ Watch the video on Youtube
   - Logs success or failure of each operation.
 
 &nbsp;
+
 **Example:**
 ```
-    <Registries>
-        <Registry>
-            <Key>HKCU:\Software\TestKey1</Key> <!-- Registry key to create. Use the full Path. -->
-            <ValueName>TestValue1</ValueName> <!-- Name of the registry setting to create -->
-            <ValueType>DWORD</ValueType> <!-- Type of the value (DWORD, STRING, etc.) -->
-            <ValueData>1</ValueData> <!-- Data for the value -->
-            <Group>GG - Registry Key Test Add</Group> <!-- Group that should have the registry key. Leave empty for everyone -->
-            <Action>add</Action> <!-- add or remove. Add could be used for modify actions -->
-        </Registry>
-        <Registry>
-            <Key>HKCU:\Software\TestKey2</Key> <!-- Registry key to create. Use the full Path. -->
-            <ValueName>TestValue2</ValueName> <!-- Name of the registry setting to create -->
-            <ValueType>DWORD</ValueType> <!-- Type of the value (DWORD, STRING, etc.) -->
-            <ValueData>2</ValueData> <!-- Data for the value -->
-            <Group>GG - Registry Key Test Remove</Group> <!-- Group that should have the registry key. Leave empty for everyone -->
-            <Action>remove</Action> <!-- add or remove. Add could be used for modify actions -->
-        </Registry>
-    </Registries>
+    "Registries": [
+      {
+        "Key": "HKCU:\\Software\\TestKey",
+        "ValueName": "TestValue1",
+        "ValueType": "DWORD",
+        "ValueData": 1,
+        "Group": "Registry - EID - TestKey",
+        "Action": "add"
+      },
+      {
+        "Key": "HKCU:\\Software\\TestKey",
+        "ValueName": "TestValue2",
+        "ValueType": "STRING",
+        "ValueData": "2",
+        "Group": "",
+        "Action": "add"
+      }
+    ],
 ```
+
+**Usage:**
+| Setting           | Values      | Description  | 
+|------------------|-----|-----------------------|
+| Key | HKCU:\\Path\\ | Fill in the desired HKCU Path |
+| ValueName | Text | Fill in the desired value name |
+| ValueType | DWORD, STRING, etc | Define the desired type |
+| ValueData | Data | Define the desired data. Decimal, text, path's, etc. |
+| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will receive this registry setting. Leave the group empty for "everyone". |
+| Action | Add or Remove | Define the action for the registry key |
+
 &nbsp;
 
 ### ⏳ Deploy-Executables
@@ -143,19 +167,29 @@ Watch the video on Youtube
 &nbsp;
 **Example:**
 ```
-    <Executables>
-        <Executable>
-            <FilePath>C:\Windows\System32\notepad.exe</FilePath> <!-- Path to the executable -->
-            <Arguments></Arguments> <!-- Arguments to pass to the executable -->
-            <Group>GG - Executable Notepad</Group> <!-- Group that should launch the executable. Leave empty for everyone -->
-        </Executable>
-        <Executable>
-            <FilePath>C:\ProgramFiles\CustomApp\Setup.msi</FilePath> <!-- Path to the executable -->
-            <Arguments>/quiet /norestart</Arguments> <!-- Arguments to pass to the executable -->
-            <Group>GG - CustomApp</Group> <!-- Group that should launch the executable. Leave empty for everyone -->
-        </Executable>
-    </Executables>
+    "Executables": [
+      {
+        "FilePath": "C:\\ProgramFiles\\CustomApp\\Setup.msi",
+        "Arguments": "/qn",
+        "Group": "GG - Custom App"
+      },
+      {
+        "FilePath": "C:\\Windows\\System32\\calc.exe",
+        "Arguments": "",
+        "Group": "GG - Calculator"
+      }     
+    ],
 ```
+
+&nbsp;
+
+**Usage:**
+| Setting           | Values      | Description  | 
+|------------------|-----|-----------------------|
+| FilePath | C:\Folder\File.exe | Configure the file path |
+| Arguments | /qn, /silent, etc | Supports arguments belonging to the application |
+| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will automatically launch the configured application. Leave the group empty for "everyone". |
+
 &nbsp;
 
 ### 💾 Deploy-FileActions
@@ -173,39 +207,50 @@ Watch the video on Youtube
   - Logs success or failure of each operation.
 
 &nbsp;
+
 **Example:**
 ```
-    <FileActions>
-        <FileAction>
-            <FileActionType>move</FileActionType> <!-- Type of file action (copy, delete, rename, move) -->
-            <SourcePath>C:\Temp\Source\File.txt</SourcePath> <!-- Source path for the file action (copy/move/delete action) -->
-            <DestinationPath>C:\Temp\Destination\File.txt</DestinationPath> <!-- Destination path for the file action (copy/move action) -->
-            <NewName>NewFileName.txt</NewName> <!-- New name for the file (rename action). Being ignored for other Actions -->
-            <Group>FileAction - EID - Test</Group> <!-- Group that should have the file action. Leave empty for everyone -->
-        </FileAction>
-        <FileAction>
-            <FileActionType>copy</FileActionType> <!-- Type of file action (copy, delete, rename, move) -->
-            <SourcePath>C:\Temp\Source\File.txt</SourcePath> <!-- Source path for the file action (copy/move/delete action) -->
-            <DestinationPath>C:\Temp\Destination\File.txt</DestinationPath> <!-- Destination path for the file action (copy/move action) -->
-            <NewName>NewFileName.txt</NewName> <!-- New name for the file (rename action). Being ignored for other Actions -->
-            <Group>GG - Copy Test File</Group> <!-- Group that should have the file action. Leave empty for everyone -->
-        </FileAction>  
-        <FileAction>
-            <FileActionType>rename</FileActionType> <!-- Type of file action (copy, delete, rename, move) -->
-            <SourcePath>C:\Temp\Source\File.txt</SourcePath> <!-- Source path for the file action (copy/move/delete action) -->
-            <DestinationPath>C:\Temp\Destination\File.txt</DestinationPath> <!-- Destination path for the file action (copy/move action) -->
-            <NewName>NewFileName.txt</NewName> <!-- New name for the file (rename action). Being ignored for other Actions -->
-            <Group>GG - Copy Test File</Group> <!-- Group that should have the file action. Leave empty for everyone -->
-        </FileAction>
-        <FileAction>
-            <FileActionType>delete</FileActionType> <!-- Type of file action (copy, delete, rename, move) -->
-            <SourcePath>C:\Temp\Source\File.txt</SourcePath> <!-- Source path for the file action (copy/move/delete action) -->
-            <DestinationPath>C:\Temp\Destination\File.txt</DestinationPath> <!-- Destination path for the file action (copy/move action) -->
-            <NewName>NewFileName.txt</NewName> <!-- New name for the file (rename action). Being ignored for other Actions -->
-            <Group>GG - Copy Test File</Group> <!-- Group that should have the file action. Leave empty for everyone -->
-        </FileAction>                         
-    </FileActions>
+    "FileActions": [
+      {
+        "FileActionType": "copy",
+        "SourcePath": "C:\\Temp\\Source\\File.txt",
+        "DestinationPath": "C:\\Temp\\Destination\\File.txt",
+        "NewName": "NewFileName.txt",
+        "Group": "FileAction - EID - Test"
+      },
+      {
+        "FileActionType": "rename",
+        "SourcePath": "C:\\Temp\\Source\\File.txt",
+        "DestinationPath": "C:\\Temp\\Destination\\File.txt",
+        "NewName": "NewFileName.txt",
+        "Group": "FileAction - EID - Test"
+      },
+      {
+        "FileActionType": "move",
+        "SourcePath": "C:\\Temp\\Source\\File.txt",
+        "DestinationPath": "C:\\Temp\\Destination\\File.txt",
+        "NewName": "NewFileName.txt",
+        "Group": "FileAction - EID - Test"
+      },
+      {
+        "FileActionType": "delete",
+        "SourcePath": "C:\\Temp\\Source\\File.txt",
+        "DestinationPath": "C:\\Temp\\Destination\\File.txt",
+        "NewName": "NewFileName.txt",
+        "Group": "FileAction - EID - Test"
+      }                  
+    ],
 ```
+
+**Usage:**
+| Setting           | Values      | Description  | 
+|------------------|-----|-----------------------|
+| FileActionType | copy, rename, move, delete | Configure the file action |
+| SourcePath | C:\Folder\Source\File.ini | Being used for actions: copy, rename, move, delete |
+| DestinationPath | C:\Folder\Destination\File.ini | Being used for actions: copy, move |
+| NewName | FileName | Set the desired new file name. Being used for actions: rename |
+| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will automatically execute the file actions. Leave the group empty for "everyone". |
+
 &nbsp;
 
 ### 📠 Deploy-Printers
@@ -221,19 +266,27 @@ Watch the video on Youtube
 &nbsp;
 **Example:**
 ```
-    <Printers>  
-        <Printer>
-            <PrinterPath>\\DC01\PRTTST01</PrinterPath> <!-- Path to the printer (UNC) -->
-            <Group>GG - Printer PRTTST01</Group> <!-- Group that should have the printer. Leave empty for everyone -->
-            <Action>add</Action> <!-- add or remove -->
-        </Printer>
-        <Printer>
-            <PrinterPath>\\DC01\PRTTST02</PrinterPath> <!-- Path to the printer (UNC) -->
-            <Group></Group> <!-- Group that should have the printer. Leave empty for everyone -->
-            <Action>remove</Action> <!-- add or remove -->
-        </Printer>        
-    </Printers>  
+    "Printers": [
+      {
+        "PrinterPath": "\\\\DC01\\PRTTST01",
+        "Group": "Printers - EID - PRTTST01",
+        "Action": "add"
+      },
+      {
+        "PrinterPath": "\\\\DC01\\PRTTST02",
+        "Group": "",
+        "Action": "add"
+      }
+    ] 
 ```
+**Usage:**
+| Setting           | Values      | Description  | 
+|------------------|-----|-----------------------|
+| PrinterPath | \\\\server\\printer | Configure the UNC path for the desired printer |
+| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will automatically add or remove the printer queue. Leave the group empty for "everyone". |
+| Action | Add or Remove | Define if the printer queue should be added or removed |
+
+
 &nbsp;
 
 ## ✅ Execution
