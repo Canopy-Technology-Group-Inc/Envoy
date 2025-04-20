@@ -307,7 +307,7 @@ The script executes the following tasks sequentially while logging on. The sched
 ## ✅ Delayed Execution
 
 
-If you need to implement a delayed execution in your environment, you can customize the code accordingly. Locate `$delaySeconds` in the Envoy-logon.ps1 file. Set the desired delay and remove any hashtags associated with the delay (which is disabled by default).
+If you need to implement a delayed execution in your environment, you can customize the code accordingly. Locate `$delaySeconds` in the `Envoy-logon.ps1` file. Set the desired delay and remove any hashtags associated with the delay (which is disabled by default).
 
 &nbsp;
 
