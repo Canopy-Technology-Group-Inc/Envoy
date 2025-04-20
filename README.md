@@ -31,9 +31,11 @@ Watch the video on Youtube
     - [💾 Deploy-FileActions](#-deploy-fileactions)
     - [📠 Deploy-Printers](#-deploy-printers)
   - [✅ Execution](#-execution)
+  - [✅ Delayed Execution](#-delayed-execution)
+  - [🔃 Envoy Refresh](#-envoy-refresh)
   - [⚠️ Dependencies](#️-dependencies)
   - [💻 Installation](#-installation)
-  - [⏩ Contributing](#-contributing)
+  - [⏩ Contributing / Feature Request](#-contributing--feature-request)
 
 &nbsp;
 
@@ -128,7 +130,7 @@ Watch the video on Youtube
         "ValueName": "TestValue1",
         "ValueType": "DWORD",
         "ValueData": 1,
-        "Group": "Registry - EID - TestKey",
+        "Group": "GG - Registry - TestKey",
         "Action": "add"
       },
       {
@@ -216,28 +218,28 @@ Watch the video on Youtube
         "SourcePath": "C:\\Temp\\Source\\File.txt",
         "DestinationPath": "C:\\Temp\\Destination\\File.txt",
         "NewName": "NewFileName.txt",
-        "Group": "FileAction - EID - Test"
+        "Group": "GG - FileAction - Copy"
       },
       {
         "FileActionType": "rename",
         "SourcePath": "C:\\Temp\\Source\\File.txt",
         "DestinationPath": "C:\\Temp\\Destination\\File.txt",
         "NewName": "NewFileName.txt",
-        "Group": "FileAction - EID - Test"
+        "Group": "GG - FileAction - Rename"
       },
       {
         "FileActionType": "move",
         "SourcePath": "C:\\Temp\\Source\\File.txt",
         "DestinationPath": "C:\\Temp\\Destination\\File.txt",
         "NewName": "NewFileName.txt",
-        "Group": "FileAction - EID - Test"
+        "Group": "GG - FileAction - Move"
       },
       {
         "FileActionType": "delete",
         "SourcePath": "C:\\Temp\\Source\\File.txt",
         "DestinationPath": "C:\\Temp\\Destination\\File.txt",
         "NewName": "NewFileName.txt",
-        "Group": "FileAction - EID - Test"
+        "Group": "GG - FileAction - Delete"
       }                  
     ],
 ```
@@ -268,14 +270,14 @@ Watch the video on Youtube
 ```
     "Printers": [
       {
-        "PrinterPath": "\\\\DC01\\PRTTST01",
-        "Group": "Printers - EID - PRTTST01",
+        "PrinterPath": "\\\\PRINTSRV.domain.local\\FollowMe",
+        "Group": "GG - Printers - FollowMe",
         "Action": "add"
       },
       {
-        "PrinterPath": "\\\\DC01\\PRTTST02",
+        "PrinterPath": "\\\\PRINTSRV.domain.local\\PRT01",
         "Group": "",
-        "Action": "add"
+        "Action": "remove"
       }
     ] 
 ```
@@ -293,13 +295,27 @@ Watch the video on Youtube
 
 The script executes the following tasks sequentially while logging on. The scheduled task created by `Envoy-core.ps1` will execute these functions.
 
-1. **Drive Mapping**: Calls `Deploy-DriveMappings` to manage network drives.
-2. **Registry Key Management**: Calls `Deploy-RegistryKeys` to manage registry keys.
-3. **Process execution**: Calls `Deploy-ProcessExecution` to manage process executions.
-4. **File Actions**: Calls `Deploy-FileActions` to manage file actions 
-5. **Printer mapping**: Calls `Deploy-PrinterMappings` to manage printer mappings.
+1. **Drive Mapping**: Execute `Deploy-DriveMappings` to manage network drives.
+2. **Registry Key Management**: Execute `Deploy-RegistryKeys` to manage registry keys.
+3. **Process execution**: Execute `Deploy-ProcessExecution` to manage process executions.
+4. **File Actions**: Execute `Deploy-FileActions` to manage file actions.
+5. **Printer mapping**: Execute `Deploy-PrinterMappings` to manage printer mappings.
+6. **All functions**: Execute `Invoke-UEMDeployment` to manage all functions at once.
 
 &nbsp;
+
+## ✅ Delayed Execution
+
+
+If you need to implement a delayed execution in your environment, you can customize the code accordingly. Locate `$delaySeconds` in the Envoy-logon.ps1 file. Set the desired delay and remove any hashtags associated with the delay (which is disabled by default).
+
+&nbsp;
+
+## 🔃 Envoy Refresh
+
+Configurations can be refreshed during an active user session. A shortcut in the public start menu allows you to re-launch Envoy. All configurations will be reassessed and executed by referencing the Config.JSON file.
+
+![Refresh](Common/EnvoyRefresh.png)
 
 ## ⚠️ Dependencies
 
@@ -321,5 +337,5 @@ To be defined
 
 &nbsp;
 
-## ⏩ Contributing
-Contributions are welcome! Please open an issue or reach out to me to discuss your ideas.
+## ⏩ Contributing / Feature Request
+Contributions are welcome! Please open an issue or reach out to me directly to discuss.
