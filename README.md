@@ -5,8 +5,7 @@ This tool automates the deployment or execution of configurations during logon o
 &nbsp;
 
 > [!NOTE]
-> The original idea for this tool was inspired by a former colleague. After leaving that company, I found myself frequently missing some kind of UEM tool, so I decided to recreate a simplified version on my own.
-
+> Envoy is still in development. More information available soon!
 &nbsp;
 
 # 📺 Demo
