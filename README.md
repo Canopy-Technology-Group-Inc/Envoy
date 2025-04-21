@@ -23,6 +23,7 @@ Watch the video on Youtube
 - [📑 Contents](#-contents)
 - [🚀 Core Components](#-core-components)
 - [🔜 Roadmap](#-roadmap)
+- [� Release Notes](#-release-notes)
 - [💥 Functions](#-functions)
     - [📰 Write-Log](#-write-log)
     - [📁 Deploy-DriveMappings](#-deploy-drivemappings)
@@ -48,6 +49,11 @@ Watch the video on Youtube
 &nbsp;
 
 # 🔜 Roadmap
+- TBA
+  
+&nbsp;
+
+# 🚧 Release Notes
 - TBA
   
 &nbsp;
