@@ -1,4 +1,4 @@
-# 🔧 ENVOY - Lightweight User Environment Manager
+# ENVOY - Lightweight User Environment Manager
 
 This tool automates the deployment or execution of configurations during logon on Windows machines. It is mainly built for Intune Managed devices where certain actions are not natively possible from Intune. During execution it connects to Microsoft Graph using an App Registration and grabs the group memberships from the user. The script performs tasks such as drive mapping, printer mapping, registry key management, File Actions (copy/move/delete/rename) and starts executables based on Entra ID group membership.
 
@@ -18,7 +18,7 @@ Watch the video on Youtube
 &nbsp;
 
 # 📑 Contents
-- [🔧 ENVOY - Lightweight User Environment Manager](#-envoy---lightweight-user-environment-manager)
+- [ENVOY - Lightweight User Environment Manager](#envoy---lightweight-user-environment-manager)
 - [📺 Demo](#-demo)
 - [📑 Contents](#-contents)
 - [🚀 Core Components](#-core-components)
@@ -36,6 +36,9 @@ Watch the video on Youtube
   - [🔃 Envoy Refresh](#-envoy-refresh)
   - [⚠️ Dependencies](#️-dependencies)
   - [💻 Installation](#-installation)
+    - [App registration](#app-registration)
+    - [Install Envoy](#install-envoy)
+    - [Configure Envoy](#configure-envoy)
   - [⏩ Contributing / Feature Request](#-contributing--feature-request)
 
 &nbsp;
@@ -325,21 +328,71 @@ Configurations can be refreshed during an active user session. A shortcut in the
 
 ## ⚠️ Dependencies
 
-Requires the following PowerShell modules. Installation will be handled by `Envoy-core.ps1`.
+Requires the following PowerShell modules. Installation will be handled by the MSI installer. If required modules are already installed it will skip the installation. Otherwise it will download and install the latest version of these modules.
 
 - `Microsoft.Graph.Authentication`
 - `Microsoft.Graph.Groups`
-- `Microsoft.Graph.Users`
-
-&nbsp;
-
-> [!NOTE]
-> Installation of these modules is being handled by Envoy-core.ps1 or either an installation method (e.g. MSI). This has yet to be defined.
 
 &nbsp;
 
 ## 💻 Installation
-To be defined
+
+Complete the following steps to set up Envoy correctly in your environment.
+
+### App registration
+
+Envoy retrieves user and group membership information from Microsoft Entra ID via Microsoft Graph. It uses the Microsoft.Graph.Authentication, Microsoft.Graph.Groups, and Microsoft.Graph.Users modules to access and query directory data.
+
+Envoy requires an App Registration with the appropriate Graph API permissions. Authentication credentials—including the Client ID, Tenant ID, and Client Secret—are stored in the Config.json file, enabling automated access to Entra ID for reporting or auditing purposes.
+
+> [!IMPORTANT]
+> The Config.json file is stored locally on the device. As a result, anyone with access to the file’s location can potentially view the Client ID and Secret. To mitigate this risk, it is essential to grant the App Registration only the minimum required permissions.
+
+**1. Create the App registration:** Go to https://entra.microsoft.com/ -> Identity -> Applications -> App registrations -> New registration.
+ 
+![EntraAppReg1](.\Images\AppReg1.png)
+
+**2. Fill in the desired App registration name:** For example Envoy. Select Single tenant and click Create.
+
+![EntraAppReg2](.\Images\AppReg2.png)
+ 
+**3. Click on New client secret:** Fill in the desired name and an required secret lifetime.
+
+![EntraAppReg3](.\Images\AppReg3.png)
+ 
+**4. Write down the following information:**
+
+  -	Secret ID
+  -	Value
+  -	Application ID
+
+![EntraAppReg4](.\Images\AppReg4.png)
+
+**5. Set required API permissions:** Microsoft Graph
+  -	Group.Read.All (Application)
+  -	GroupMember.Read.All (Application)
+  -	User.Read (Delegated)
+  -	User.Read.All (Application)
+
+![EntraAppReg5](.\Images\AppReg5.png)
+
+### Install Envoy
+Visit the official releases page: 👉 https://github.com/j0eyv/Envoy/releases
+
+Look for the latest release at the top of the page (marked with a “Latest” label). Under the Assets section of that release, click the .msi file (e.g., Envoy.msi) to download the Windows installer. Once downloaded, distribute the MSI installation to your managed endpoints.
+
+> [!IMPORTANT]
+> The installation **must** be installed in `C:\ProgramData\Envoy`. Using a different location might break the entire product.
+
+The installation process is simple—just run the MSI file manually to start the setup. For bulk or unattended deployments, it's recommended to use silent installation parameters for automation. Therefor, use `msiexec /i "C:\Path\To\Envoy.msi" /qn /norestart`. While using **Intune**, you can simply distribute Envoy via the available methods.
+
+- `/i Envoy.msi`: Installs the MSI package named Envoy.msi.
+- `/qn`: Quiet mode with no UI.
+- `/norestart`: Prevents the installer from restarting the system.
+
+### Configure Envoy
+
+Once distributed, we only need to make sure the `Config.JSON` file is being used is filled correctly. The default config file that comes with the installation is mainly filled with examples. See the the detailed [documentation](#-functions) for configuration examples. 
 
 &nbsp;
 
