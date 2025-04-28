@@ -2,10 +2,18 @@
 
 This tool automates the deployment or execution of configurations during logon on Windows machines. It is mainly built for Intune Managed devices where certain actions are not natively possible from Intune. During execution it connects to Microsoft Graph using an App Registration and grabs the group memberships from the user. The script performs tasks such as drive mapping, printer mapping, registry key management, File Actions (copy/move/delete/rename) and starts executables based on Entra ID group membership.
 
+
+ - 🌐 https://www.envoycontrol.com
+ - ✉️ info@envoycontrol.com
+
+&nbsp;
+
+Want to be part of the pre-release testers? Fill in this form: https://forms.office.com/e/xmXknPbVUB
+
 &nbsp;
 
 > [!NOTE]
-> Envoy is still in development. More information available soon!
+> Envoy is still in development. Release date TBA!
 
 &nbsp;
 
