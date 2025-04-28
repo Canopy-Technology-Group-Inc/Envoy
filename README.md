@@ -40,7 +40,7 @@ Watch the video on Youtube
     - [Install Envoy](#install-envoy)
     - [Configure Envoy](#configure-envoy)
     - [Centralized distribution](#centralized-distribution)
-  - [⏩ Contributing / Feature Request](#-contributing--feature-request)
+
 
 &nbsp;
 
@@ -408,7 +408,4 @@ See the the detailed [documentation](#-functions) for configuration examples.
 
 ### Centralized distribution
 
-Centralized `Config.JSON` management and distribution is still under development.
-
-## ⏩ Contributing / Feature Request
-Contributions are welcome! Please open an issue or reach out to me directly to discuss.
+Centralized `Config.JSON` management and distribution is still under development. More information soon!
