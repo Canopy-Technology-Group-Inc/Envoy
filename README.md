@@ -341,12 +341,10 @@ Complete the following steps to set up Envoy correctly in your environment.
 
 ### App registration
 
-Envoy retrieves user and group membership information from Microsoft Entra ID via Microsoft Graph. It uses the Microsoft.Graph.Authentication, Microsoft.Graph.Groups, and Microsoft.Graph.Users modules to access and query directory data.
-
-Envoy requires an App Registration with the appropriate Graph API permissions. Authentication credentials—including the Client ID, Tenant ID, and Client Secret—are stored in the Config.json file, enabling automated access to Entra ID for reporting or auditing purposes.
+Envoy retrieves user and group membership information from Microsoft Entra ID via Microsoft Graph. It uses the Microsoft.Graph.Authentication, Microsoft.Graph.Groups, and Microsoft.Graph.Users modules to access and query directory data. Envoy requires an App Registration with the appropriate Graph API permissions. Authentication credentials (*including the Client ID, Tenant ID, and Client Secret*) are stored in the `Config.json` file, enabling automated access to Entra ID for reporting or auditing purposes.
 
 > [!IMPORTANT]
-> The Config.json file is stored locally on the device. As a result, anyone with access to the file’s location can potentially view the Client ID and Secret. To mitigate this risk, it is essential to grant the App Registration only the minimum required permissions.
+> The `Config.json` file is stored locally on the device. As a result, anyone with access to the file’s location can potentially view the Client ID and Secret. To mitigate this risk, it is essential to grant the App Registration only the minimum required permissions.
 
 **1. Create the App registration:** Go to https://entra.microsoft.com/ -> Identity -> Applications -> App registrations -> New registration.
  
@@ -392,7 +390,18 @@ The installation process is simple—just run the MSI file manually to start the
 
 ### Configure Envoy
 
-Once distributed, we only need to make sure the `Config.JSON` file is being used is filled correctly. The default config file that comes with the installation is mainly filled with examples. See the the detailed [documentation](#-functions) for configuration examples. 
+Once distributed, we only need to make sure the `Config.JSON` file is being used is filled correctly. The default config file that comes with the installation is mainly filled with examples. Important part of the `Config.JSON` file is the tenant configuration. Make sure the Entra ID configuration matches the newly created App registration from the steps before. We **DO** need the the following information:
+
+```
+  "Configuration": {
+    "Entra": {
+      "TenantId": "42ba3ed1-ae78-****-****-************",
+      "AppId": "aed0ab9a-963e-****-****-***********",
+      "AppSecret": "0d08Q~uOmVlERx_***************-"
+    },
+```
+
+See the the detailed [documentation](#-functions) for configuration examples. 
 
 &nbsp;
 
