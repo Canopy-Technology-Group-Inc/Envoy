@@ -350,15 +350,15 @@ Envoy requires an App Registration with the appropriate Graph API permissions. A
 
 **1. Create the App registration:** Go to https://entra.microsoft.com/ -> Identity -> Applications -> App registrations -> New registration.
  
-![EntraAppReg1](.\Images\AppReg1.png)
+![EntraAppReg1](Images/AppReg1.png)
 
 **2. Fill in the desired App registration name:** For example Envoy. Select Single tenant and click Create.
 
-![EntraAppReg2](.\Images\AppReg2.png)
+![EntraAppReg2](Images/AppReg2.png)
  
 **3. Click on New client secret:** Fill in the desired name and an required secret lifetime.
 
-![EntraAppReg3](.\Images\AppReg3.png)
+![EntraAppReg3](Images/AppReg3.png)
  
 **4. Write down the following information:**
 
@@ -366,7 +366,7 @@ Envoy requires an App Registration with the appropriate Graph API permissions. A
   -	Value
   -	Application ID
 
-![EntraAppReg4](.\Images\AppReg4.png)
+![EntraAppReg4](Images/AppReg4.png)
 
 **5. Set required API permissions:** Microsoft Graph
   -	Group.Read.All (Application)
@@ -374,7 +374,7 @@ Envoy requires an App Registration with the appropriate Graph API permissions. A
   -	User.Read (Delegated)
   -	User.Read.All (Application)
 
-![EntraAppReg5](.\Images\AppReg5.png)
+![EntraAppReg5](Images/AppReg5.png)
 
 ### Install Envoy
 Visit the official releases page: 👉 https://github.com/j0eyv/Envoy/releases
