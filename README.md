@@ -39,6 +39,7 @@ Watch the video on Youtube
     - [App registration](#app-registration)
     - [Install Envoy](#install-envoy)
     - [Configure Envoy](#configure-envoy)
+    - [Centralized distribution](#centralized-distribution)
   - [⏩ Contributing / Feature Request](#-contributing--feature-request)
 
 &nbsp;
@@ -404,6 +405,10 @@ Once distributed, we only need to make sure the `Config.JSON` file is being used
 See the the detailed [documentation](#-functions) for configuration examples. 
 
 &nbsp;
+
+### Centralized distribution
+
+Centralized `Config.JSON` management and distribution is still under development.
 
 ## ⏩ Contributing / Feature Request
 Contributions are welcome! Please open an issue or reach out to me directly to discuss.
