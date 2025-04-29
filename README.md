@@ -333,7 +333,7 @@ If you need to implement a delayed execution in your environment, you can custom
 
 Configurations can be refreshed during an active user session. A shortcut in the public start menu allows you to re-launch Envoy. All configurations will be reassessed and executed by referencing the Config.JSON file.
 
-![Refresh](Common/EnvoyRefresh.png)
+![Refresh](Images/EnvoyRefresh.png)
 
 ## ⚠️ Dependencies
 
