@@ -43,11 +43,15 @@ Watch the video on Youtube
   - [✅ Delayed Execution](#-delayed-execution)
   - [🔃 Envoy Refresh](#-envoy-refresh)
   - [⚠️ Dependencies](#️-dependencies)
-  - [💻 Installation](#-installation)
-    - [App registration](#app-registration)
-    - [Install Envoy](#install-envoy)
-    - [Configure Envoy](#configure-envoy)
-    - [Centralized distribution](#centralized-distribution)
+- [💻 Installation](#-installation)
+  - [App registration](#app-registration)
+  - [Install Envoy](#install-envoy)
+  - [Configure Envoy](#configure-envoy)
+  - [Centralized distribution](#centralized-distribution)
+    - [GitHub-Hosted Config Delivery](#github-hosted-config-delivery)
+    - [Azure Blob](#azure-blob)
+    - [Azure Files](#azure-files)
+    - [File Share (on-prem)](#file-share-on-prem)
 
 
 &nbsp;
@@ -344,11 +348,11 @@ Requires the following PowerShell modules. Installation will be handled by the M
 
 &nbsp;
 
-## 💻 Installation
+# 💻 Installation
 
 Complete the following steps to set up Envoy correctly in your environment.
 
-### App registration
+## App registration
 
 Envoy retrieves user and group membership information from Microsoft Entra ID via Microsoft Graph. It uses the Microsoft.Graph.Authentication, Microsoft.Graph.Groups, and Microsoft.Graph.Users modules to access and query directory data. Envoy requires an App Registration with the appropriate Graph API permissions. Authentication credentials (*including the Client ID, Tenant ID, and Client Secret*) are stored in the `Config.json` file, enabling automated access to Entra ID for reporting or auditing purposes.
 
@@ -383,7 +387,7 @@ Envoy retrieves user and group membership information from Microsoft Entra ID vi
 
 ![EntraAppReg5](Images/AppReg5.png)
 
-### Install Envoy
+## Install Envoy
 Visit the official releases page: 👉 https://github.com/j0eyv/Envoy/releases
 
 Look for the latest release at the top of the page (marked with a “Latest” label). Under the Assets section of that release, click the .msi file (e.g., Envoy.msi) to download the Windows installer. Once downloaded, distribute the MSI installation to your managed endpoints.
@@ -397,7 +401,7 @@ The installation process is simple—just run the MSI file manually to start the
 - `/qn`: Quiet mode with no UI.
 - `/norestart`: Prevents the installer from restarting the system.
 
-### Configure Envoy
+## Configure Envoy
 
 Once distributed, we only need to make sure the `Config.JSON` file is being used is filled correctly. The default config file that comes with the installation is mainly filled with examples. Important part of the `Config.JSON` file is the tenant configuration. Make sure the Entra ID configuration matches the newly created App registration from the steps before. We **DO** need the the following information:
 
@@ -414,6 +418,25 @@ See the the detailed [documentation](#-functions) for configuration examples.
 
 &nbsp;
 
-### Centralized distribution
+## Centralized distribution
 
-Centralized `Config.JSON` management and distribution is still under development. More information soon!
+There are several ways to manage and distribute a centralized `Config.JSON`, and the best approach depends entirely on your existing infrastructure and the tools it supports. Unfortunately, there’s no universal solution that satisfies all use cases and security best practices. Therefore, we provide a few potential options that you will need to implement yourself. It's important to evaluate each option carefully, as some may have limitations or may not fully align with recommended security practices.
+
+### GitHub-Hosted Config Delivery
+This method stores a Config.JSON file in a private GitHub repository. Windows clients securely download this file on a schedule using PowerShell and a GitHub Personal Access Token (PAT) for authentication.
+
+- ✅ Secure storage in a private repo
+- 🔐 Access controlled via read-only PAT
+- ⏰ Automated 15-minute interval download using a Scheduled Task
+- 🛠️ Script uses Invoke-WebRequest with the raw.githubusercontent.com endpoint
+
+A scheduled task for this method is delivered with the Envoy.MSI installation file. You are required to configure a few parameters within `C:\ProgramData\Envoy\Core\Update\Download-EnvoyConfig-Github.ps1`. Find a way to distribute this PowerShell script into your endpoints.
+
+> [!NOTE]
+> This method requires you to create a private Github repo with a Personal Access Token (PAT). See this link for more information: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens
+
+### Azure Blob
+
+### Azure Files
+
+### File Share (on-prem)
