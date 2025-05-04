@@ -437,6 +437,26 @@ A scheduled task for this method is delivered with the Envoy.MSI installation fi
 
 ### Azure Blob
 
+This method stores a Config.JSON file in a Azure Blob container. Windows clients securely download this file on a schedule using PowerShell.
+
+- ✅ Secure storage in a Azure Blob container
+- ⏰ Automated 15-minute interval download using a Scheduled Task
+- 🛠️ Script uses Invoke-WebRequest with the blob.core.windows.net endpoint
+
+A scheduled task for this method is delivered with the Envoy.MSI installation file. You are required to configure a single parameters within `C:\ProgramData\Envoy\Core\Update\Download-EnvoyConfig-Blob.ps1`. Find a way to distribute this PowerShell script into your endpoints.
+  
+> [!NOTE]
+> This method requires you to create a Azure Blob storage within a Storage Account. The endpoint running Envoy, should have read access to the blob storage. Try accessing the URL from a browser in the endpoint to verify if access is allowed. See this link for more information: https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal
+
 ### Azure Files
+
+This method stores a Config.JSON file in a Azure File Share. Windows clients securely download this file on a schedule using PowerShell.
+
+- ✅ Secure storage in a Azure File Share
+- 🔐 Access controlled via Storage Account key (less recommended)
+- ⏰ Automated 15-minute interval download using a Scheduled Task
+- 🛠️ Script uses Invoke-WebRequest with the file.core.windows.net endpoint
+
+A scheduled task for this method is delivered with the Envoy.MSI installation file. You are required to configure a few parameters within `C:\ProgramData\Envoy\Core\Update\Download-EnvoyConfig-AzureFiles.ps1`. Find a way to distribute this PowerShell script into your endpoints.
 
 ### File Share (on-prem)
