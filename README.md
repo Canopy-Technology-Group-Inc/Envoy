@@ -315,7 +315,7 @@ Watch the video on Youtube
 
 ## ✅ Execution
 
-The script executes the following tasks sequentially while logging on. The scheduled task created by `Envoy-core.ps1` will execute these functions.
+The script executes the following tasks sequentially while logging on. The scheduled task created by `Envoy.msi` will execute these functions.
 
 1. **Drive Mapping**: Execute `Deploy-DriveMappings` to manage network drives.
 2. **Registry Key Management**: Execute `Deploy-RegistryKeys` to manage registry keys.
