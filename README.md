@@ -459,4 +459,7 @@ This method stores a Config.JSON file in a Azure File Share. Windows clients sec
 
 A scheduled task for this method is delivered with the Envoy.MSI installation file. You are required to configure a few parameters within `C:\ProgramData\Envoy\Core\Update\Download-EnvoyConfig-AzureFiles.ps1`. Find a way to distribute this PowerShell script into your endpoints.
 
+> [!NOTE]
+> This method requires you to create a Azure File Share within a Storage Account. The endpoint running Envoy, should be able to reach the file share. See this link for more information: https://learn.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-portal?tabs=azure-portal
+
 ### File Share (on-prem)
