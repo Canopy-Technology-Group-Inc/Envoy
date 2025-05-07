@@ -345,6 +345,7 @@ Requires the following PowerShell modules. Installation will be handled by the M
 
 - `Microsoft.Graph.Authentication`
 - `Microsoft.Graph.Groups`
+- `Microsoft.Graph.Users`
 
 &nbsp;
 
@@ -463,3 +464,11 @@ A scheduled task for this method is delivered with the Envoy.MSI installation fi
 > This method requires you to create a Azure File Share within a Storage Account. The endpoint running Envoy, should be able to reach the file share. See this link for more information: https://learn.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-portal?tabs=azure-portal
 
 ### File Share (on-prem)
+This method stores a Config.JSON file in a regular File Share. Windows clients securely download this file on a schedule using PowerShell.
+
+- ✅ Secure storage in a File Share
+- 🔐 Access controlled via NTFS permissions
+- ⏰ Automated 15-minute interval download using a Scheduled Task
+- 🛠️ Scheduled Task should be configured to run under a service account
+
+A scheduled task for this method is delivered with the Envoy.MSI installation file. You are required to configure a few parameters within `C:\ProgramData\Envoy\Core\Update\Download-EnvoyConfig-FileShare.ps1`. The scheduled task should run under a service account which needs to be configured by yourself in the scheduled task. Find a way to distribute this PowerShell script and the fully configured scheduled task into your endpoints.
