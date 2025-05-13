@@ -21,7 +21,7 @@ Want to be part of the pre-release testers? Fill in this form: https://forms.off
 
 Watch the video on Youtube
 
-[![Watch the video on Youtube](https://i.ytimg.com/vi/BE4vtI_WJGE/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLC1hCvaNLwTVhb9RM0J46CS5sLsYw)](https://youtu.be/BE4vtI_WJGE)
+[![Watch the video on Youtube](https://i.ytimg.com/vi/BE4vtI_WJGE/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLC1hCvaNLwTVhb9RM0J46CS5sLsYw)]([https://youtu.be/BE4vtI_WJGE](https://www.youtube.com/watch?v=HaOsP7huuDw))
 
 &nbsp;
 
