@@ -66,7 +66,7 @@ Watch the video on Youtube
 &nbsp;
 
 # 🔜 Roadmap
-- TBA
+- Getting rid of vbscript to run a PS completely hidden.
   
 &nbsp;
 
