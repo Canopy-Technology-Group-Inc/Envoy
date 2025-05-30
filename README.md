@@ -67,6 +67,7 @@ Watch the video on Youtube
 
 # 🔜 Roadmap
 - Getting rid of vbscript to run a PS completely hidden.
+- Adding FileTypeAssociations function (except for HTTP/HTTPS/PDF)
   
 &nbsp;
 
