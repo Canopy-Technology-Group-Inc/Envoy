@@ -66,6 +66,7 @@ Watch the video on Youtube
 &nbsp;
 
 # 🔜 Roadmap
+- Migrate App Registration secret to different authentication method
 - Getting rid of vbscript to run a PS completely hidden.
 - Adding FileTypeAssociations function (except for HTTP/HTTPS/PDF)
   
