@@ -8,10 +8,6 @@ This tool automates the deployment or execution of configurations during logon o
 
 &nbsp;
 
-Want to be part of the pre-release testers? Fill in this form: https://forms.office.com/e/xmXknPbVUB
-
-&nbsp;
-
 > [!NOTE]
 > Envoy is still in development. Release date TBA!
 
