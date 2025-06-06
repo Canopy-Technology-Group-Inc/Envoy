@@ -65,6 +65,7 @@ Watch the video on Youtube
 - Migrate App Registration secret to a more robust authentication method
 - Getting rid of vbscript to run a PS completely hidden.
 - Adding FileTypeAssociations function (except for HTTP/HTTPS/PDF)
+- Adding an option to set specific printer as the default printer
   
 &nbsp;
 
