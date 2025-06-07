@@ -6,10 +6,6 @@ This tool automates the deployment or execution of configurations during logon o
  - 🌐 https://www.envoycontrol.com
  - ✉️ info@envoycontrol.com
 
-&nbsp;
-
-> [!NOTE]
-> Envoy is still in development. Release date TBA!
 
 &nbsp;
 
@@ -65,13 +61,12 @@ Watch the video on Youtube
 - Migrate App Registration secret to a more robust authentication method
 - Getting rid of vbscript to run a PS completely hidden.
 - Adding FileTypeAssociations function (except for HTTP/HTTPS/PDF)
-- Adding an option to set specific printer as the default printer
-  
+
 &nbsp;
 
 # 🚧 Release Notes
-- TBA
-  
+- 1.1.116: Adding an option to set specific printer as the default printer
+
 &nbsp;
 
 # 💥 Functions
@@ -120,7 +115,7 @@ Watch the video on Youtube
 ```
 
 **Usage:**
-| Setting           | Values      | Description  | 
+| Setting           | Values      | Description  |
 |------------------|-----|-----------------------|
 | DriveLetter      | x,y,z, etc.  | Configure the desired drive mapping letter.                   |
 | UNCPath           |\\\\server.domain.local\\share  | Configure the desired UNC path. Don't forget double slashes for JSON |
@@ -167,7 +162,7 @@ Watch the video on Youtube
 ```
 
 **Usage:**
-| Setting           | Values      | Description  | 
+| Setting           | Values      | Description  |
 |------------------|-----|-----------------------|
 | Key | HKCU:\\Path\\ | Fill in the desired HKCU Path |
 | ValueName | Text | Fill in the desired value name |
@@ -201,14 +196,14 @@ Watch the video on Youtube
         "FilePath": "C:\\Windows\\System32\\calc.exe",
         "Arguments": "",
         "Group": "GG - Calculator"
-      }     
+      }
     ],
 ```
 
 &nbsp;
 
 **Usage:**
-| Setting           | Values      | Description  | 
+| Setting           | Values      | Description  |
 |------------------|-----|-----------------------|
 | FilePath | C:\Folder\File.exe | Configure the file path |
 | Arguments | /qn, /silent, etc | Supports arguments belonging to the application |
@@ -227,7 +222,7 @@ Watch the video on Youtube
     - Copy: Copies files to a destination.
     - Delete: Deletes files.
     - Rename: Renames files.
-    - Move: Moves files to a new location. 
+    - Move: Moves files to a new location.
   - Logs success or failure of each operation.
 
 &nbsp;
@@ -262,12 +257,12 @@ Watch the video on Youtube
         "DestinationPath": "C:\\Temp\\Destination\\File.txt",
         "NewName": "NewFileName.txt",
         "Group": "GG - FileAction - Delete"
-      }                  
+      }
     ],
 ```
 
 **Usage:**
-| Setting           | Values      | Description  | 
+| Setting           | Values      | Description  |
 |------------------|-----|-----------------------|
 | FileActionType | copy, rename, move, delete | Configure the file action |
 | SourcePath | C:\Folder\Source\File.ini | Being used for actions: copy, rename, move, delete |
@@ -294,21 +289,23 @@ Watch the video on Youtube
       {
         "PrinterPath": "\\\\PRINTSRV.domain.local\\FollowMe",
         "Group": "GG - Printers - FollowMe",
-        "Action": "add"
+        "Action": "add",
+        "DefaultPrinter": "True"
       },
       {
         "PrinterPath": "\\\\PRINTSRV.domain.local\\PRT01",
         "Group": "",
         "Action": "remove"
       }
-    ] 
+    ]
 ```
 **Usage:**
-| Setting           | Values      | Description  | 
+| Setting           | Values      | Description  |
 |------------------|-----|-----------------------|
 | PrinterPath | \\\\server\\printer | Configure the UNC path for the desired printer |
 | Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will automatically add or remove the printer queue. Leave the group empty for "everyone". |
 | Action | Add or Remove | Define if the printer queue should be added or removed |
+| DefaultPrinter | True | Sets the specified printer queue as the default printer in Windows. If this value is empty or set to False, no action is taken. If multiple printer queues are marked as default in the configuration, the last one listed will be applied as the default printer. |
 
 
 &nbsp;
@@ -361,17 +358,17 @@ Envoy retrieves user and group membership information from Microsoft Entra ID vi
 > The `Config.json` file is stored locally on the device. As a result, anyone with access to the file’s location can potentially view the Client ID and Secret. To mitigate this risk, it is essential to grant the App Registration only the minimum required permissions.
 
 **1. Create the App registration:** Go to https://entra.microsoft.com/ -> Identity -> Applications -> App registrations -> New registration.
- 
+
 ![EntraAppReg1](Images/AppReg1.png)
 
 **2. Fill in the desired App registration name:** For example Envoy. Select Single tenant and click Create.
 
 ![EntraAppReg2](Images/AppReg2.png)
- 
+
 **3. Click on New client secret:** Fill in the desired name and an required secret lifetime.
 
 ![EntraAppReg3](Images/AppReg3.png)
- 
+
 **4. Write down the following information:**
 
   -	Secret ID
@@ -415,7 +412,7 @@ Once distributed, we only need to make sure the `Config.JSON` file is being used
     },
 ```
 
-See the the detailed [documentation](#-functions) for configuration examples. 
+See the the detailed [documentation](#-functions) for configuration examples.
 
 &nbsp;
 
@@ -445,7 +442,7 @@ This method stores a Config.JSON file in a Azure Blob container. Windows clients
 - 🛠️ Script uses Invoke-WebRequest with the blob.core.windows.net endpoint
 
 A scheduled task for this method is delivered with the Envoy.MSI installation file. You are required to configure a single parameters within `C:\ProgramData\Envoy\Core\Update\Download-EnvoyConfig-Blob.ps1`. Find a way to distribute this PowerShell script into your endpoints.
-  
+
 > [!NOTE]
 > This method requires you to create a Azure Blob storage within a Storage Account. The endpoint running Envoy, should have read access to the blob storage. Try accessing the URL from a browser in the endpoint to verify if access is allowed. See this link for more information: https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal
 
