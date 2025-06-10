@@ -45,6 +45,7 @@ Watch the video on Youtube
     - [Azure Blob](#azure-blob)
     - [Azure Files](#azure-files)
     - [File Share (on-prem)](#file-share-on-prem)
+- [Support the project](#support-the-project)
 
 
 &nbsp;
@@ -469,3 +470,18 @@ This method stores a Config.JSON file in a regular File Share. Windows clients s
 - 🛠️ Scheduled Task should be configured to run under a service account
 
 A scheduled task for this method is delivered with the Envoy.MSI installation file. You are required to configure a few parameters within `C:\ProgramData\Envoy\Core\Update\Download-EnvoyConfig-FileShare.ps1`. The scheduled task should run under a service account which needs to be configured by yourself in the scheduled task. Find a way to distribute this PowerShell script and the fully configured scheduled task into your endpoints.
+
+
+# Support the project
+
+> [!NOTE]
+> If you're making money with our open source work, consider giving back to what made it possible.
+
+Envoy is completely free to use! That said, building and improving it takes significant time and resources. By supporting us, you help keep Envoy open source and freely available for everyone. Your contribution makes ongoing development and maintenance possible.
+
+- Keep Envoy free and accessible for everyone
+- Support ongoing development and new features
+- Help maintain and improve documentation
+
+**Github Sponsors:** https://github.com/sponsors/j0eyv
+**Buy me a coffee**: https://buymeacoffee.com/j0eyv
