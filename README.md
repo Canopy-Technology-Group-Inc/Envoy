@@ -1,6 +1,6 @@
 # ENVOY - Lightweight User Environment Manager
 
-This tool automates the deployment or execution of configurations during logon on Windows machines. It is mainly built for Intune Managed devices where certain actions are not natively possible from Intune. During execution it connects to Microsoft Graph using an App Registration and grabs the group memberships from the user. The script performs tasks such as drive mapping, printer mapping, registry key management, File Actions (copy/move/delete/rename) and starts executables based on Entra ID group membership.
+This tool automates the deployment or execution of configurations during logon on Windows machines. It is mainly built for Intune Managed devices where certain actions are not natively possible from Intune. During execution it connects to Microsoft Graph using an Enterprise App and grabs the group memberships from the user. The script performs tasks such as drive mapping, printer mapping, registry key management, File Actions (copy/move/delete/rename) and starts executables based on Entra ID group membership.
 
 
  - 🌐 https://www.envoycontrol.com
@@ -37,7 +37,7 @@ Watch the video on Youtube
   - [🔃 Envoy Refresh](#-envoy-refresh)
   - [⚠️ Dependencies](#️-dependencies)
 - [💻 Installation](#-installation)
-  - [App registration](#app-registration)
+  - [Enterprise App](#enterprise-app)
   - [Install Envoy](#install-envoy)
   - [Configure Envoy](#configure-envoy)
   - [Centralized distribution](#centralized-distribution)
@@ -54,18 +54,18 @@ Watch the video on Youtube
 
 - **Microsoft Graph Authentication**: The script uses the `Microsoft.Graph` modules to interact with Microsoft Graph APIs.
 - **Configuration File**: Reads settings from `Config.json` located at `C:\ProgramData\Envoy\Config.json`.
-- **Authentication**: Connects to Microsoft Graph using `TenantId`, `AppId`, and `AppSecret` from the configuration file.
+- **Authentication**: Connects to Microsoft Graph using **Microsoft Graph Command Line Tools** public endpoint.
 
 &nbsp;
 
 # 🔜 Roadmap
-- Migrate App Registration secret to a more robust authentication method (if possible)
 - Getting rid of vbscript to run a PS completely hidden.
 
 &nbsp;
 
 # 🚧 Release Notes
 - 1.1.116: Adding an option to set specific printer as the default printer
+- 1.2.001: Locally stored AppID & Client Secret are now obsolete. Migrated to Delegated Permissions based on **Microsoft Graph Command Line Tools** public endpoint.
 
 &nbsp;
 
@@ -348,42 +348,22 @@ Requires the following PowerShell modules. Installation will be handled by the M
 
 # 💻 Installation
 
-Complete the following steps to set up Envoy correctly in your environment.
-
-## App registration
-
-Envoy retrieves user and group membership information from Microsoft Entra ID via Microsoft Graph. It uses the Microsoft.Graph.Authentication, Microsoft.Graph.Groups, and Microsoft.Graph.Users modules to access and query directory data. Envoy requires an App Registration with the appropriate Graph API permissions. Authentication credentials (*including the Client ID, Tenant ID, and Client Secret*) are stored in the `Config.json` file, enabling automated access to Entra ID for reporting or auditing purposes.
+> [!NOTE]
+> Installation steps for previous versions starting with 1.1.* can be found [here](https://github.com/j0eyv/Envoy/blob/1.1.-versions/README.md).
 
 > [!IMPORTANT]
-> The `Config.json` file is stored locally on the device. As a result, anyone with access to the file’s location can potentially view the Client ID and Secret. To mitigate this risk, it is essential to grant the App Registration only the minimum required permissions.
+> If you are upgrading from version 1.1.* to 1.2.*, please be aware that this release introduces breaking changes if not followed correctly! See [Upgrade.md](Upgrade.md).
 
-**1. Create the App registration:** Go to https://entra.microsoft.com/ -> Identity -> Applications -> App registrations -> New registration.
+Complete the following steps to set up Envoy correctly in your environment.
 
-![EntraAppReg1](Images/AppReg1.png)
+## Enterprise App
 
-**2. Fill in the desired App registration name:** For example Envoy. Select Single tenant and click Create.
+Envoy retrieves user and group membership information from Microsoft Entra ID via Microsoft Mg Graph. It uses the Microsoft.Graph.Authentication, Microsoft.Graph.Groups, and Microsoft.Graph.Users modules to access and query directory data. Envoy uses Enterprise App **Microsoft Graph Command Line Tools** with the appropriate Graph API permissions.
 
-![EntraAppReg2](Images/AppReg2.png)
+**1. Modify Enterprise App permissions:** Go to https://entra.microsoft.com/ -> Enterprise Apps -> **Microsoft Graph Command Line Tools** . Make sure to add the following permissions and grant admin consent.
 
-**3. Click on New client secret:** Fill in the desired name and an required secret lifetime.
+![EnterpriseApp1](Images/EnterpriseApp1.png)
 
-![EntraAppReg3](Images/AppReg3.png)
-
-**4. Write down the following information:**
-
-  -	Secret ID
-  -	Value
-  -	Application ID
-
-![EntraAppReg4](Images/AppReg4.png)
-
-**5. Set required API permissions:** Microsoft Graph
-  -	Group.Read.All (Application)
-  -	GroupMember.Read.All (Application)
-  -	User.Read (Delegated)
-  -	User.Read.All (Application)
-
-![EntraAppReg5](Images/AppReg5.png)
 
 ## Install Envoy
 Visit the official releases page: 👉 https://github.com/j0eyv/Envoy/releases
@@ -401,16 +381,7 @@ The installation process is simple—just run the MSI file manually to start the
 
 ## Configure Envoy
 
-Once distributed, we only need to make sure the `Config.JSON` file is being used is filled correctly. The default config file that comes with the installation is mainly filled with examples. Important part of the `Config.JSON` file is the tenant configuration. Make sure the Entra ID configuration matches the newly created App registration from the steps before. We **DO** need the the following information:
-
-```
-  "Configuration": {
-    "Entra": {
-      "TenantId": "42ba3ed1-ae78-****-****-************",
-      "AppId": "aed0ab9a-963e-****-****-***********",
-      "AppSecret": "0d08Q~uOmVlERx_***************-"
-    },
-```
+Once distributed, we only need to make sure the `Config.JSON` file is being used is filled correctly. The default config file that comes with the installation is mainly filled with examples. 
 
 See the the detailed [documentation](#-functions) for configuration examples.
 
