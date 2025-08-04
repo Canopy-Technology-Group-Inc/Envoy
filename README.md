@@ -360,10 +360,21 @@ Complete the following steps to set up Envoy correctly in your environment.
 
 Envoy retrieves user and group membership information from Microsoft Entra ID via Microsoft Mg Graph. It uses the Microsoft.Graph.Authentication, Microsoft.Graph.Groups, and Microsoft.Graph.Users modules to access and query directory data. Envoy uses Enterprise App **Microsoft Graph Command Line Tools** with the appropriate Graph API permissions.
 
-**1. Modify Enterprise App permissions:** Go to https://entra.microsoft.com/ -> Enterprise Apps -> **Microsoft Graph Command Line Tools** . Make sure to add the following permissions and grant admin consent.
+**1. Modify Enterprise App permissions:**
+
+Option 1: Go to https://entra.microsoft.com/ -> Enterprise Apps -> **Microsoft Graph Command Line Tools** . Make sure to add the following permissions and grant admin consent.
 
 ![EnterpriseApp1](Images/EnterpriseApp1.png)
 
+Option 2: Authenticate to MgGraph with suffient permissions (e.g. Application Administrator)
+
+```
+# Import the PS module(s)
+Import-Module Microsoft.Graph.Authentication, Microsoft.Graph.Groups, Microsoft.Graph.Users
+
+# Connect to Entra ID using MG Graph delegated permissions
+Connect-MgGraph -Scopes "User.Read.All", "Group.Read.All", "GroupMember.Read.All"
+```
 
 ## Install Envoy
 Visit the official releases page: 👉 https://github.com/j0eyv/Envoy/releases
@@ -455,3 +466,4 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
