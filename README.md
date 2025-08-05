@@ -362,19 +362,37 @@ Envoy retrieves user and group membership information from Microsoft Entra ID vi
 
 **1. Modify Enterprise App permissions:**
 
-Option 1: Go to https://entra.microsoft.com/ -> Enterprise Apps -> **Microsoft Graph Command Line Tools** . Make sure to add the following permissions and grant admin consent.
+Verify whether the permissions have already been granted to the Enterprise Application. If they haven't been assigned yet, we need to initiate the assignment and grant admin consent. If the app is not found in Entra ID this means the app has never been used. You could trigger the creation of the Enterprise App while execution option 1 or option 2 which are shown below.
+
+https://entra.microsoft.com/ -> Enterprise Apps -> **Microsoft Graph Command Line Tools** .
+
+> [!NOTE]
+> The Enterprise App could sometimes be found under name **Microsoft Graph PowerShell** with Application ID **14d82eec-204b-4c2f-b7e8-296a70dab67e**. Verify by looking for the Application ID.
 
 ![EnterpriseApp1](Images/EnterpriseApp1.png)
 
-Option 2: Authenticate to MgGraph with suffient permissions (e.g. Application Administrator)
+**Manual trigger:**
+
+Option 1: When Envoy is launched from a test or admin machine, an interactive permission prompt will automatically appear. These permissions must be granted for proper functionality.
+
+Option 2: Run the command below from a test or admin device to authenticate with Microsoft Graph. Ensure your account has the necessary Entra ID permissions, such as Application Administrator.
 
 ```
-# Import the PS module(s)
-Import-Module Microsoft.Graph.Authentication, Microsoft.Graph.Groups, Microsoft.Graph.Users
+# Install and Import required modules
+"Microsoft.Graph.Authentication", "Microsoft.Graph.Groups", "Microsoft.Graph.Users" | ForEach-Object {
+    if (-not (Get-Module -ListAvailable -Name $_)) { Install-Module -Name $_ -Scope CurrentUser -Force -AllowClobber }
+    Import-Module $_
+}
 
-# Connect to Entra ID using MG Graph delegated permissions
+# Connect to Entra ID using Microsoft Graph delegated permissions
 Connect-MgGraph -Scopes "User.Read.All", "Group.Read.All", "GroupMember.Read.All"
+
 ```
+
+This will result in the following Interactive popup. Accept the permissions and grant admin consent.
+
+![EnterpriseApp2](Images/EnterpriseApp2.png)
+
 
 ## Install Envoy
 Visit the official releases page: 👉 https://github.com/j0eyv/Envoy/releases
@@ -466,4 +484,5 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
