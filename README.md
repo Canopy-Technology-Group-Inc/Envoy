@@ -59,13 +59,14 @@ Watch the video on Youtube
 &nbsp;
 
 # 🔜 Roadmap
-- Getting rid of vbscript to run a PS completely hidden.
+- None (yet). Consider a feature request!
 
 &nbsp;
 
 # 🚧 Release Notes
 - 1.1.116: Adding an option to set specific printer as the default printer
 - 1.2.001: Locally stored AppID & Client Secret are now obsolete. Migrated to Delegated Permissions based on **Microsoft Graph Command Line Tools** public endpoint.
+- 1.2.005: Removed a small piece of VBScript-based code. With VBScript being retired in Windows, this change makes Envoy more future-proof.
 
 &nbsp;
 
@@ -484,5 +485,6 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
