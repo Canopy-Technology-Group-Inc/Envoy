@@ -67,9 +67,11 @@ Watch the video on Youtube
 - 1.1.116: Adding an option to set specific printer as the default printer
 - 1.2.001: Locally stored AppID & Client Secret are now obsolete. Migrated to Delegated Permissions based on **Microsoft Graph Command Line Tools** public endpoint.
 - 1.2.005: Removed a small piece of VBScript-based code. With VBScript being retired in Windows, this change makes Envoy more future-proof.
+- 1.2.007: Fixed a bug where drive mappings showed a popup.
+
 
 # ⚠️ Known issues
-- 1.2.005: When mapping drive letters, Envoy may display a few pop-ups, which can interrupt other actions from completing. We're working on a fix! If this causes issues in your environment, we recommend using version 1.2.001 until the problem is resolved.
+- 1.2.007: When mapping printers, Envoy may display a few pop-ups while handling default printers, which can interrupt other actions from completing. We're working on a fix! If this causes issues in your environment, we recommend using version **1.2.001** until the problem is resolved.
 
 &nbsp;
 
@@ -488,6 +490,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
