@@ -71,6 +71,7 @@ Watch the video on Youtube
 - 1.2.007: Fixed a bug where drive mappings showed a popup.
 - 1.2.008: Fixed a bug where printer mappings showed a popup.
 - 1.2.009: File Actions feature now supports parameters like %localappdata%
+- 1.2.010: Registry settings now supports Binary values. Also improved error handling which annoyed when logging on using a local account on a device.
 
 &nbsp;
 
@@ -162,6 +163,22 @@ Watch the video on Youtube
         "ValueData": "2",
         "Group": "",
         "Action": "add"
+      },
+      {
+        "Key": "HKCU:\\Software\\JoeyTestKey",
+        "ValueName": "BinaryValueA",
+        "ValueType": "BINARY",
+        "ValueData": [1,2,3,4,5,6,7,8],
+        "Group": "",
+        "Action": "add"
+      },
+      {
+        "Key": "HKCU:\\Software\\JoeyTestKey",
+        "ValueName": "BinaryValueB",
+        "ValueType": "BINARY",
+        "ValueData": "0A,0B,0C,0D,0E,0F",
+        "Group": "",
+        "Action": "add"
       }
     ],
 ```
@@ -171,7 +188,7 @@ Watch the video on Youtube
 |------------------|-----|-----------------------|
 | Key | HKCU:\\Path\\ | Fill in the desired HKCU Path |
 | ValueName | Text | Fill in the desired value name |
-| ValueType | DWORD, STRING, etc | Define the desired type |
+| ValueType | DWORD, STRING, BINARY, etc | Define the desired type |
 | ValueData | Data | Define the desired data. Decimal, text, path's, etc. |
 | Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will receive this registry setting. Leave the group empty for "everyone". |
 | Action | Add or Remove | Define the action for the registry key |
@@ -242,6 +259,13 @@ Watch the video on Youtube
         "NewName": "NewFileName.txt",
         "Group": "GG - FileAction - Copy"
       },
+      {
+        "FileActionType": "copy",
+        "SourcePath": "%localappdata%\\File.txt",
+        "DestinationPath": "C:\\Temp\\Destination\\File.txt",
+        "NewName": "NewFileName.txt",
+        "Group": "Envoy - FileAction - EID - Test"
+      },  
       {
         "FileActionType": "rename",
         "SourcePath": "C:\\Temp\\Source\\File.txt",
@@ -489,6 +513,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
