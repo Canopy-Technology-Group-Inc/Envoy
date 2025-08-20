@@ -70,10 +70,7 @@ Watch the video on Youtube
 - 1.2.005: Removed a small piece of VBScript-based code. With VBScript being retired in Windows, this change makes Envoy more future-proof.
 - 1.2.007: Fixed a bug where drive mappings showed a popup.
 - 1.2.008: Fixed a bug where printer mappings showed a popup.
-
-
-# ⚠️ Known issues
-- None
+- 1.2.009: File Actions feature now supports parameters like %localappdata%
 
 &nbsp;
 
@@ -273,7 +270,7 @@ Watch the video on Youtube
 | Setting           | Values      | Description  |
 |------------------|-----|-----------------------|
 | FileActionType | copy, rename, move, delete | Configure the file action |
-| SourcePath | C:\Folder\Source\File.ini | Being used for actions: copy, rename, move, delete |
+| SourcePath | C:\Folder\Source\File.ini | Being used for actions: copy, rename, move, delete. Supports parameters like %localappdata% |
 | DestinationPath | C:\Folder\Destination\File.ini | Being used for actions: copy, move |
 | NewName | FileName | Set the desired new file name. Being used for actions: rename |
 | Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will automatically execute the file actions. Leave the group empty for "everyone". |
@@ -492,6 +489,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
