@@ -452,7 +452,6 @@ Once distributed, we only need to make sure the `Config.JSON` file is being used
 
 ![ConfigBuilder4](Images/ConfigBuilder4.png)
 
-
 &nbsp;
 
 ## Centralized distribution
@@ -523,6 +522,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
