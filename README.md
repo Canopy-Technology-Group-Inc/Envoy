@@ -439,9 +439,19 @@ The installation process is simple—just run the MSI file manually to start the
 
 ## Configure Envoy
 
-Once distributed, we only need to make sure the `Config.JSON` file is being used is filled correctly. The default config file that comes with the installation is mainly filled with examples. 
+Once distributed, we only need to make sure the `Config.JSON` file is being used is filled correctly. The default config file that comes with the installation is mainly filled with examples. There are currently 2 ways to build to desired configuration file:
 
-See the the detailed [documentation](#-functions) for configuration examples.
+- **Manual:** See the the detailed [documentation](#-functions) for configuration examples)
+- **Config Builder:** GUI interface with step-by-step instructions and configuration download -> [https://www.envoycontrol.com/config](https://www.envoycontrol.com/config).
+
+![ConfigBuilder1](Images/ConfigBuilder1.png)
+
+![ConfigBuilder2](Images/ConfigBuilder2.png)
+
+![ConfigBuilder3](Images/ConfigBuilder3.png)
+
+![ConfigBuilder4](Images/ConfigBuilder4.png)
+
 
 &nbsp;
 
@@ -513,6 +523,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
