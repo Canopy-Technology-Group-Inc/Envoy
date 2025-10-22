@@ -24,6 +24,7 @@ Watch the video on Youtube
 - [📑 Contents](#-contents)
 - [🚀 Core Components](#-core-components)
 - [🔜 Roadmap](#-roadmap)
+- [⚠️ Known issues](#-known-issues)
 - [🚧 Release Notes](#-release-notes)
 - [💥 Functions](#-functions)
     - [📰 Write-Log](#-write-log)
@@ -527,6 +528,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
