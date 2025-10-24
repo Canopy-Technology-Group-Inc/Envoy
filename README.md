@@ -381,7 +381,8 @@ The script executes the following tasks sequentially while logging on. The sched
 3. **Process execution**: Execute `Deploy-ProcessExecution` to manage process executions.
 4. **File Actions**: Execute `Deploy-FileActions` to manage file actions.
 5. **Printer mapping**: Execute `Deploy-PrinterMappings` to manage printer mappings.
-6. **All functions**: Execute `Invoke-UEMDeployment` to manage all functions at once.
+6. **Start-Menu shortcut**: Execute `Deploy-StartMenuEntry` to add shortcuts.
+7. **All functions**: Execute `Invoke-UEMDeployment` to manage all functions at once.
 
 &nbsp;
 
