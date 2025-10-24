@@ -32,6 +32,7 @@ Watch the video on Youtube
     - [⏳ Deploy-Executables](#-deploy-executables)
     - [💾 Deploy-FileActions](#-deploy-fileactions)
     - [📠 Deploy-Printers](#-deploy-printers)
+    - [➡️ Deploy-StartMenuEntry](#️-deploy-startmenuentry)
   - [✅ Execution](#-execution)
   - [✅ Delayed Execution](#-delayed-execution)
   - [🔃 Envoy Refresh](#-envoy-refresh)
@@ -59,6 +60,7 @@ Watch the video on Youtube
 &nbsp;
 
 # 🔜 Roadmap
+- Action method for Start-Menu shortcuts (add/remove). Currently only ADD is supported.
 - Investigating for a more robust and centralized logging method/dashboard
 - Consider a feature request!
 
@@ -72,6 +74,7 @@ Watch the video on Youtube
 - 1.2.008: Fixed a bug where printer mappings showed a popup.
 - 1.2.009: File Actions feature now supports parameters like %localappdata%
 - 1.2.010: Registry settings now supports Binary values. Also improved error handling which annoyed when logging on using a local account on a device.
+- 1.2.11: A new capability has been introduced to automatically create Start Menu shortcuts. Additionally, an issue that could block installation on certain non-English operating systems has been resolved.
 
 &nbsp;
 
@@ -335,6 +338,36 @@ Watch the video on Youtube
 | Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will automatically add or remove the printer queue. Leave the group empty for "everyone". |
 | Action | Add or Remove | Define if the printer queue should be added or removed |
 | DefaultPrinter | True | Sets the specified printer queue as the default printer in Windows. If this value is empty or set to False, no action is taken. If multiple printer queues are marked as default in the configuration, the last one listed will be applied as the default printer. |
+
+&nbsp;
+
+### ➡️ Deploy-StartMenuEntry
+
+**Purpose:** Add's Start-Menu shortcuts based on group membership.
+
+**Key Features:**
+  - Reads shortcut configurations from `Config.json`.
+  - Checks user group memberships to determine eligibility.
+  - Supports adding Start-Menu shortcuts
+  - Logs success or failure of each operation.
+
+&nbsp;
+**Example:**
+```
+    "StartMenuEntry": [
+      {
+        "shortcutName": "Notepad++",
+        "executable": "C:\\Program Files\\Notepad++\\notepad++.exe",
+        "Group": ""
+      } 
+    ] 
+```
+**Usage:**
+| Setting           | Values      | Description  |
+|------------------|-----|-----------------------|
+| Shortcutname | Application Name | Defines the displayname the shortcut presents to the user |
+| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will automatically receive this start-menu shortcut. Leave the group empty for "everyone". |
+| Executable | C:\App\Start.exe | Shortcut target |
 
 
 &nbsp;
