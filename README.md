@@ -66,6 +66,11 @@ Watch the video on Youtube
 
 &nbsp;
 
+# ⚠️ Known issues
+- The scheduled task "Envoy Logon" may not be created correctly on non-English operating systems. A fix has been identified and will be implemented in the next release.
+
+&nbsp;
+
 # 🚧 Release Notes
 - 1.1.116: Adding an option to set specific printer as the default printer
 - 1.2.001: Locally stored AppID & Client Secret are now obsolete. Migrated to Delegated Permissions based on **Microsoft Graph Command Line Tools** public endpoint.
@@ -555,6 +560,9 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
+
+
 
 
 
