@@ -74,7 +74,8 @@ Watch the video on Youtube
 - 1.2.008: Fixed a bug where printer mappings showed a popup.
 - 1.2.009: File Actions feature now supports parameters like %localappdata%
 - 1.2.010: Registry settings now supports Binary values. Also improved error handling which annoyed when logging on using a local account on a device.
-- 1.2.11: A new capability has been introduced to automatically create Start Menu shortcuts. Additionally, an issue that could block installation on certain non-English operating systems has been resolved.
+- 1.2.011: A new capability has been introduced to automatically create Start Menu shortcuts. Additionally, an issue that could block installation on certain non-English operating systems has been resolved.
+- 1.2.012: Added support for %username% and %upn% in Drive Mapping Feature. Variable relies on foldername. 
 
 &nbsp;
 
@@ -119,6 +120,22 @@ Watch the video on Youtube
         "Description": "Test Drive 2",
         "Priority": 1,
         "Action": "add"
+      },
+      {
+        "DriveLetter": "H",
+        "UNCPath": "\\\\fileserver\\Home\\%username%",
+        "Group": "",
+        "Description": "Home",
+        "Priority": 1,
+        "Action": "add"
+      },
+      {
+        "DriveLetter": "Z",
+        "UNCPath": "\\\\fileserver\\Home\\%upn%",
+        "Group": "",
+        "Description": "Home",
+        "Priority": 1,
+        "Action": "add"
       }
     ],
 ```
@@ -127,7 +144,7 @@ Watch the video on Youtube
 | Setting           | Values      | Description  |
 |------------------|-----|-----------------------|
 | DriveLetter      | x,y,z, etc.  | Configure the desired drive mapping letter.                   |
-| UNCPath           |\\\\server.domain.local\\share  | Configure the desired UNC path. Don't forget double slashes for JSON |
+| UNCPath           |\\\\server.domain.local\\share  | Configure the desired UNC path. Don't forget double slashes for JSON. Supports %upn% and %username% (which is the name of the final folder) |
 | Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will receive this drive mapping. Leave the group empty for "everyone". |
 | Description | Text | Fill in a description. E.g. Sales Drive, Markering Team. |
 | Priority | 1,2,3,4,5,6, etc | Conflicts with drive mappings can occur if a user is a member of multiple groups with the same drive letter as result. |Prio 1 is the lowest, higher winns. |
@@ -556,6 +573,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
