@@ -76,6 +76,7 @@ Watch the video on Youtube
 - 1.2.009: File Actions feature now supports parameters like %localappdata%
 - 1.2.010: Registry settings now supports Binary values. Also improved error handling which annoyed when logging on using a local account on a device.
 - 1.2.011: A new capability has been introduced to automatically create Start Menu shortcuts. Additionally, an issue that could block installation on certain non-English operating systems has been resolved.
+- 1.2.013: Added support for %UPN% and %USERNAME% variables in the Drive Mapping function, enabling better handling of home drive paths.
 
 
 &nbsp;
@@ -145,7 +146,7 @@ Watch the video on Youtube
 | Setting           | Values      | Description  |
 |------------------|-----|-----------------------|
 | DriveLetter      | x,y,z, etc.  | Configure the desired drive mapping letter.                   |
-| UNCPath           |\\\\server.domain.local\\share  | Configure the desired UNC path. Don't forget double slashes for JSON. Supports %upn% and %username% (which is the name of the final folder) |
+| UNCPath           |\\\\server.domain.local\\share  | Configure the desired UNC path. Don't forget double slashes for JSON. Supports %upn% and %username% variables. Under the hood, %username% maps to "$env:USERNAME" and %upn% maps to "whoami /upn" |
 | Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will receive this drive mapping. Leave the group empty for "everyone". |
 | Description | Text | Fill in a description. E.g. Sales Drive, Markering Team. |
 | Priority | 1,2,3,4,5,6, etc | Conflicts with drive mappings can occur if a user is a member of multiple groups with the same drive letter as result. |Prio 1 is the lowest, higher winns. |
@@ -574,6 +575,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
