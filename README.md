@@ -60,6 +60,7 @@ Watch the video on Youtube
 &nbsp;
 
 # 🔜 Roadmap
+- Support for %username% and %upn% in Drive Mapping Feature.
 - Action method for Start-Menu shortcuts (add/remove). Currently only ADD is supported.
 - Investigating for a more robust and centralized logging method/dashboard
 - Consider a feature request!
@@ -75,7 +76,7 @@ Watch the video on Youtube
 - 1.2.009: File Actions feature now supports parameters like %localappdata%
 - 1.2.010: Registry settings now supports Binary values. Also improved error handling which annoyed when logging on using a local account on a device.
 - 1.2.011: A new capability has been introduced to automatically create Start Menu shortcuts. Additionally, an issue that could block installation on certain non-English operating systems has been resolved.
-- 1.2.012: Added support for %username% and %upn% in Drive Mapping Feature. Variable relies on foldername. 
+
 
 &nbsp;
 
@@ -573,6 +574,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
