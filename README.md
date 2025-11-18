@@ -60,8 +60,8 @@ Watch the video on Youtube
 &nbsp;
 
 # 🔜 Roadmap
-- Support for %username% and %upn% in Drive Mapping Feature.
 - Action method for Start-Menu shortcuts (add/remove). Currently only ADD is supported.
+- Method to pin taskbar items (Investigating)
 - Investigating for a more robust and centralized logging method/dashboard
 - Consider a feature request!
 
@@ -575,6 +575,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
