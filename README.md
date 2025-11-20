@@ -148,8 +148,8 @@ Watch the video on Youtube
 | DriveLetter      | x,y,z, etc.  | Configure the desired drive mapping letter.                   |
 | UNCPath           |\\\\server.domain.local\\share  | Configure the desired UNC path. Don't forget double slashes for JSON. Supports %upn% and %username% variables. Under the hood, %username% maps to "$env:USERNAME" and %upn% maps to "whoami /upn" |
 | Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will receive this drive mapping. Leave the group empty for "everyone". |
-| Description | Text | Fill in a description. E.g. Sales Drive, Markering Team. |
-| Priority | 1,2,3,4,5,6, etc | Conflicts with drive mappings can occur if a user is a member of multiple groups with the same drive letter as result. |Prio 1 is the lowest, higher winns. |
+| Description | Text | Fill in a description. E.g. Sales Drive, Marketing Team. |
+| Priority | 1,2,3,4,5,6, etc | Conflicts with drive mappings can occur if a user is a member of multiple groups with the same drive letter as result. |Prio 1 is the lowest, higher wins. |
 | Action | Add or Remove | Define the action for the drive mapping |
 
 &nbsp;
@@ -575,6 +575,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
