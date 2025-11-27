@@ -25,6 +25,7 @@ Watch the video on Youtube
 - [🚀 Core Components](#-core-components)
 - [🔜 Roadmap](#-roadmap)
 - [🚧 Release Notes](#-release-notes)
+- [🛑 Known issues](#-known-issues)
 - [💥 Functions](#-functions)
     - [📰 Write-Log](#-write-log)
     - [📁 Deploy-DriveMappings](#-deploy-drivemappings)
@@ -62,8 +63,13 @@ Watch the video on Youtube
 # 🔜 Roadmap
 - Action method for Start-Menu shortcuts (add/remove). Currently only ADD is supported.
 - Method to pin taskbar items (Investigating)
+- Method to add/remove desktop shortcuts, including subfolders
+- Method to include nested groups in Entra ID
+
+  **Long term:**
 - Investigating for a more robust and centralized logging method/dashboard
-- Consider a feature request!
+  
+Consider a feature request!
 
 &nbsp;
 
@@ -78,6 +84,10 @@ Watch the video on Youtube
 - 1.2.011: A new capability has been introduced to automatically create Start Menu shortcuts. Additionally, an issue that could block installation on certain non-English operating systems has been resolved.
 - 1.2.013: Added support for %UPN% and %USERNAME% variables in the Drive Mapping function, enabling better handling of home drive paths.
 
+&nbsp;
+
+# 🛑 Known issues
+- Config Builder: When generating Start Menu entries in the Config Builder, the Items are labled “Name, Command, Icon, Group”. This should be shortcutname, executable, Group.
 
 &nbsp;
 
@@ -575,21 +585,3 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
