@@ -34,6 +34,7 @@ Watch the video on Youtube
     - [💾 Deploy-FileActions](#-deploy-fileactions)
     - [📠 Deploy-Printers](#-deploy-printers)
     - [➡️ Deploy-StartMenuEntry](#️-deploy-startmenuentry)
+    - [➡️ Deploy-DesktopShortcut](#️-deploy-desktopshortcut)
   - [✅ Execution](#-execution)
   - [✅ Delayed Execution](#-delayed-execution)
   - [🔃 Envoy Refresh](#-envoy-refresh)
@@ -61,17 +62,15 @@ Watch the video on Youtube
 &nbsp;
 
 # 🔜 Roadmap
-- Action method for Start-Menu shortcuts (add/remove). Currently only ADD is supported.
-- Start-Menu shortcuts support for subfolders
-- Method to add/remove desktop shortcuts
-- Method to include nested groups in Entra ID
+- Support for nested groups in Entra ID (Investigating)
 
   **Long term:**
 - Investigating for a more robust and centralized logging method/dashboard
   
-&nbsp;
+  &nbsp;
 
-Consider a feature request!
+  > [!TIP]
+  > Consider a feature request via GitHub issues or by contacting me directly!
 
 &nbsp;
 
@@ -85,11 +84,22 @@ Consider a feature request!
 - 1.2.010: Registry settings now supports Binary values. Also improved error handling which annoyed when logging on using a local account on a device.
 - 1.2.011: A new capability has been introduced to automatically create Start Menu shortcuts. Additionally, an issue that could block installation on certain non-English operating systems has been resolved.
 - 1.2.013: Added support for %UPN% and %USERNAME% variables in the Drive Mapping function, enabling better handling of home drive paths.
+- 1.2.014: This version includes several enhancements along with a new feature.
+  
+  - Resolved an issue that caused a popup error when a logfile failed to be created  
+  - Introduced action methods for the start-menu entry function, allowing you to remove start-menu entries as well  
+  - Enabled support for subfolders within the start-menu  
+  - Implemented a new feature that lets you add and delete desktop shortcuts!
 
 &nbsp;
 
 # 🛑 Known issues
-- Start Menu entries: Icon path is not fully functional. Will be solved in a feature release.
+- None
+    
+&nbsp;
+
+  > [!TIP]
+  > Report bugs via GitHub issues or by contacting me directly!
 
 &nbsp;
 
@@ -374,12 +384,13 @@ Consider a feature request!
 
 ### ➡️ Deploy-StartMenuEntry
 
-**Purpose:** Add's Start-Menu shortcuts based on group membership.
+**Purpose:** Add's or removes Start-Menu shortcuts based on group membership.
 
 **Key Features:**
   - Reads shortcut configurations from `Config.json`.
   - Checks user group memberships to determine eligibility.
-  - Supports adding Start-Menu shortcuts
+  - Supports adding and removing Start-Menu shortcuts.
+  - Supports subfolders within the Start-Menu. It requires at least 2 shortcuts per subfolder to actually show up. This is how Windows handles the start-menu.
   - Logs success or failure of each operation.
 
 &nbsp;
@@ -389,6 +400,8 @@ Consider a feature request!
       {
         "shortcutName": "Notepad++",
         "executable": "C:\\Program Files\\Notepad++\\notepad++.exe",
+        "shortcutFolder": "Utilities",
+        "action": "Add",
         "Group": ""
       } 
     ] 
@@ -398,10 +411,47 @@ Consider a feature request!
 |------------------|-----|-----------------------|
 | Shortcutname | Application Name | Defines the displayname the shortcut presents to the user |
 | Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will automatically receive this start-menu shortcut. Leave the group empty for "everyone". |
+| Shortcutfolder | e.g. "Utilities" | Supports subfolders within the Start-Menu. It requires at least 2 shortcuts per subfolder to actually show up. This is how Windows handles the start-menu. |
+| Action | Add or Remove | Define if the shortcut should be added or removed |
 | Executable | C:\App\Start.exe | Shortcut target |
 
+&nbsp;
+
+### ➡️ Deploy-DesktopShortcut
+
+**Purpose:** Add's or removes desktop shortcuts based on group membership.
+
+**Key Features:**
+  - Reads shortcut configurations from `Config.json`.
+  - Checks user group memberships to determine eligibility.
+  - Supports adding and removing desktop shortcuts.
+  - Logs success or failure of each operation.
 
 &nbsp;
+**Example:**
+```
+    "StartMenuEntry": [
+      {
+        "shortcutName": "Command Prompt",
+        "executable": "C:\\Windows\\System32\\cmd.exe",
+        "action": "remove",
+        "Group": ""
+      },
+      {
+        "shortcutName": "Remote Assistance",
+        "executable": "C:\\Windows\\System32\\msra.exe",
+        "action": "add",
+        "Group": ""
+      }       
+    ] 
+```
+**Usage:**
+| Setting           | Values      | Description  |
+|------------------|-----|-----------------------|
+| Shortcutname | Application Name | Defines the displayname the shortcut presents to the user |
+| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will automatically receive this start-menu shortcut. Leave the group empty for "everyone". |
+| Action | Add or Remove | Define if the shortcut should be added or removed |
+| Executable | C:\App\Start.exe | Shortcut target |
 
 ## ✅ Execution
 
@@ -413,7 +463,8 @@ The script executes the following tasks sequentially while logging on. The sched
 4. **File Actions**: Execute `Deploy-FileActions` to manage file actions.
 5. **Printer mapping**: Execute `Deploy-PrinterMappings` to manage printer mappings.
 6. **Start-Menu shortcut**: Execute `Deploy-StartMenuEntry` to add shortcuts.
-7. **All functions**: Execute `Invoke-UEMDeployment` to manage all functions at once.
+7. **Desktop shortcut**: Execute `Deploy-StartMenuEntry` to add shortcuts.
+8. **All functions**: Execute `Invoke-UEMDeployment` to manage all functions at once.
 
 &nbsp;
 
@@ -587,6 +638,3 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
-
-
-
