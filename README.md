@@ -453,6 +453,8 @@ Watch the video on Youtube
 | Action | Add or Remove | Define if the shortcut should be added or removed |
 | Executable | C:\App\Start.exe | Shortcut target |
 
+&nbsp;
+
 ## ✅ Execution
 
 The script executes the following tasks sequentially while logging on. The scheduled task created by `Envoy.msi` will execute these functions.
@@ -638,4 +640,5 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
