@@ -81,7 +81,8 @@ Watch the video on Youtube
 - 1.2.013: Added support for %UPN% and %USERNAME% variables in the Drive Mapping function, enabling better handling of home drive paths.
 - 1.2.014: This version includes several enhancements along with a new feature.
   
-  - Resolved an issue that caused a popup error when a logfile failed to be created  
+  - Fixed a problem that might cause a popup error when a logfile failed to be created
+  - Fixed a problem that might lead to Update Tasks being deleted during upgrades to newer versions.
   - Introduced action methods for the start-menu entry function, allowing you to remove start-menu entries as well  
   - Enabled support for subfolders within the start-menu  
   - Implemented a new feature that lets you add and delete desktop shortcuts!
@@ -632,6 +633,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
