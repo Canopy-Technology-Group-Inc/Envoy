@@ -89,7 +89,7 @@ Consider a feature request!
 &nbsp;
 
 # 🛑 Known issues
-- Config Builder: When generating Start Menu entries in the Config Builder, the Items are labled “Name, Command, Icon, Group”. This should be shortcutname, executable, Group.
+- Start Menu entries: Icon path is not fully functional. Will be solved in a feature release.
 
 &nbsp;
 
@@ -587,3 +587,4 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
