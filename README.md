@@ -463,7 +463,9 @@ The script executes the following tasks sequentially while logging on. The sched
 ## ✅ Delayed Execution
 
 
-If you need to implement a delayed execution in your environment, you can customize the code accordingly. Locate `$delaySeconds` in the `Envoy-logon.ps1` file. Set the desired delay and remove any hashtags associated with the delay (which is disabled by default). In recent releases, `Envoy-Logon.ps1` has been replaced by `Envoy-logon.exe`. Altering the `Envoy-logon.ps1` is no longer effective in these updated versions because it is embedded within the executable. The standard configuration appears to be adequate for the majority of organizations.
+If you need to implement a delayed execution in your environment, you can customize the code accordingly. Locate `$delaySeconds` in the `Envoy-logon.ps1` file. Set the desired delay and remove any hashtags associated with the delay (which is disabled by default).
+
+In recent releases, `Envoy-Logon.ps1` has been replaced by `Envoy-logon.exe`. Altering the `Envoy-logon.ps1` is no longer effective in these updated versions because it is embedded within the executable. The standard configuration appears to be adequate for the majority of organizations.
 
 &nbsp;
 
@@ -630,6 +632,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
