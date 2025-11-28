@@ -63,7 +63,6 @@ Watch the video on Youtube
 # 🔜 Roadmap
 - Action method for Start-Menu shortcuts (add/remove). Currently only ADD is supported.
 - Start-Menu shortcuts support for subfolders
-- Method to pin taskbar items (Investigating)
 - Method to add/remove desktop shortcuts
 - Method to include nested groups in Entra ID
 
@@ -588,5 +587,6 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
