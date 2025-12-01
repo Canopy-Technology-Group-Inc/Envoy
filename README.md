@@ -62,10 +62,16 @@ Watch the video on Youtube
 &nbsp;
 
 # 🔜 Roadmap
+- Modifications to the Authentication approach since Microsoft Graph CLI will be retired August 28th, 2026 (Investigating)
 - Support for nested groups in Entra ID (Investigating)
+- Support for using Entra ID Group ObjectID/GUID instead of group name (Investigating)
+- Support for IconPath setting for Desktop Shortcuts and Start-Menu Shortcuts feature (Investigating)
 
   **Long term:**
 - Investigating for a more robust and centralized logging method/dashboard
+- Multiple Entra Groups per item/block
+- Default tenant selection: When a user is in multiple Tenants signed in, the user gets a sign-in prompt, asking to choose the tenant. Figure out if we can force the tenant selection (Investigating).
+  
   
   &nbsp;
 
@@ -90,7 +96,7 @@ Watch the video on Youtube
 &nbsp;
 
 # 🛑 Known issues
-- None
+- Config Builder: Items in the Shortcutfolder are not included when downloading a Config.JSON file from the Config Builder. Although the Configuration Preview displays the correct values, the downloaded file does not include the "Shortcutfolder" setting. For now, you must add this setting manually.
 
 &nbsp;
 
@@ -633,6 +639,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
