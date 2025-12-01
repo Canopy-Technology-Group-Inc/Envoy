@@ -64,7 +64,7 @@ Watch the video on Youtube
 # 🔜 Roadmap
 - Modifications to the Authentication approach since Microsoft Graph CLI will be retired August 28th, 2026 (Investigating)
 - Support for nested groups in Entra ID (Investigating)
-- Support for using Entra ID Group ObjectID/GUID instead of group name (Investigating)
+- Support for using Entra ID Group ObjectID/GUID next to group name (Investigating)
 - Support for IconPath setting for Desktop Shortcuts and Start-Menu Shortcuts feature (Investigating)
 
   **Long term:**
@@ -639,6 +639,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
