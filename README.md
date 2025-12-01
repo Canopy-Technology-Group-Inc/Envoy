@@ -96,7 +96,7 @@ Watch the video on Youtube
 &nbsp;
 
 # 🛑 Known issues
-- Config Builder: Items in the Shortcutfolder are not included when downloading a Config.JSON file from the Config Builder. Although the Configuration Preview displays the correct values, the downloaded file does not include the "Shortcutfolder" setting. For now, you must add this setting manually.
+- None known issues
 
 &nbsp;
 
@@ -639,6 +639,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
