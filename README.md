@@ -28,6 +28,7 @@ Watch the video on Youtube
 - [🛑 Known issues](#-known-issues)
 - [💥 Functions](#-functions)
     - [📰 Write-Log](#-write-log)
+    - [🔑 Tenant Configuration](#-tenant-configuration)
     - [📁 Deploy-DriveMappings](#-deploy-drivemappings)
     - [📘 Deploy-RegistryKeys](#-deploy-registrykeys)
     - [⏳ Deploy-Executables](#-deploy-executables)
@@ -36,11 +37,10 @@ Watch the video on Youtube
     - [➡️ Deploy-StartMenuEntry](#️-deploy-startmenuentry)
     - [➡️ Deploy-DesktopShortcut](#️-deploy-desktopshortcut)
   - [✅ Execution](#-execution)
-  - [✅ Delayed Execution](#-delayed-execution)
   - [🔃 Envoy Refresh](#-envoy-refresh)
   - [⚠️ Dependencies](#️-dependencies)
 - [💻 Installation](#-installation)
-  - [Enterprise App](#enterprise-app)
+  - [App registration](#app-registration)
   - [Install Envoy](#install-envoy)
   - [Configure Envoy](#configure-envoy)
   - [Centralized distribution](#centralized-distribution)
@@ -57,21 +57,18 @@ Watch the video on Youtube
 
 - **Microsoft Graph Authentication**: The script uses the `Microsoft.Graph` modules to interact with Microsoft Graph APIs.
 - **Configuration File**: Reads settings from `Config.json` located at `C:\ProgramData\Envoy\Config.json`.
-- **Authentication**: Connects to Microsoft Graph using **Microsoft Graph Command Line Tools** public endpoint.
+- **Authentication**: Connects to Microsoft Graph using app App Registration.
 
 &nbsp;
 
 # 🔜 Roadmap
-- Modifications to the Authentication approach since Microsoft Graph CLI will be retired August 28th, 2026 (Investigating)
 - Support for nested groups in Entra ID (Investigating)
 - Support for using Entra ID Group ObjectID/GUID next to group name (Investigating)
 - Support for IconPath setting for Desktop Shortcuts and Start-Menu Shortcuts feature (Investigating)
 
   **Long term:**
 - Investigating for a more robust and centralized logging method/dashboard
-- Multiple Entra Groups per item/block
-- Default tenant selection: When a user is in multiple Tenants signed in, the user gets a sign-in prompt, asking to choose the tenant. Figure out if we can force the tenant selection (Investigating).
-  
+- Multiple Entra Groups per item/block  
   
   &nbsp;
 
@@ -93,6 +90,8 @@ Watch the video on Youtube
   - Enabled support for subfolders within the start-menu  
   - Implemented a new feature that lets you add and delete desktop shortcuts!
 
+- 1.3.001: Authentication for Graph has been updated to use an App Registration because Microsoft Graph CLI is being discontinued.
+  
 &nbsp;
 
 # 🛑 Known issues
@@ -107,6 +106,32 @@ Watch the video on Youtube
 - **Purpose:** Logs messages to a user-specific log file located at `C:\ProgramData\Envoy\Logging\<username>\User.log`.
 
 - **Key Features:** Ensures the log directory exists and appends timestamped log entries.
+
+&nbsp;
+
+### 🔑 Tenant Configuration
+
+**Purpose**: Being used to configure the Entra ID connection.
+
+**Key Features:** Used for TenantId and ApplicationId parameters.
+
+
+
+
+```
+"Tenant": [
+      {
+        "TenantId": "****-****-****-**********",
+        "AppId": "****-****-****-**********"
+      },
+    ],
+```
+
+**Usage:**
+| Setting           | Values      | Description  |
+|------------------|-----|-----------------------|
+| TenantId      | ******** | Configure the desired TenantId letter.                   |
+| AppId           | ******** | Configure the AppId. This is the AppRegistration which handles the authentication |
 
 &nbsp;
 
@@ -467,15 +492,6 @@ The script executes the following tasks sequentially while logging on. The sched
 
 &nbsp;
 
-## ✅ Delayed Execution
-
-
-If you need to implement a delayed execution in your environment, you can customize the code accordingly. Locate `$delaySeconds` in the `Envoy-logon.ps1` file. Set the desired delay and remove any hashtags associated with the delay (which is disabled by default).
-
-In recent releases, `Envoy-Logon.ps1` has been replaced by `Envoy-logon.exe`. Altering the `Envoy-logon.ps1` is no longer effective in these updated versions because it is embedded within the executable. The standard configuration appears to be adequate for the majority of organizations.
-
-&nbsp;
-
 ## 🔃 Envoy Refresh
 
 Configurations can be refreshed during an active user session. A shortcut in the public start menu allows you to re-launch Envoy. All configurations will be reassessed and executed by referencing the Config.JSON file.
@@ -495,33 +511,45 @@ Requires the following PowerShell modules. Installation will be handled by the M
 # 💻 Installation
 
 > [!NOTE]
-> Installation steps for previous versions starting with 1.1.* can be found [here](https://github.com/j0eyv/Envoy/blob/1.1.-versions/README.md).
+> Installation steps for previous versions starting with 1.1.* can be found [here](https://github.com/j0eyv/Envoy/blob/1.1.-versions/README.md). Installation steps for versions starting with 1.2.* can be found [here](https://github.com/j0eyv/Envoy/blob/1.2.-versions/README.md).
 
 > [!IMPORTANT]
-> If you are upgrading from version 1.1.* to 1.2.*, please be aware that this release introduces breaking changes if not followed correctly! See [Upgrade.md](Upgrade.md).
+> If you are upgrading from version 1.2.* to 1.3.*, please be aware that this release introduces breaking changes if not followed correctly! See [Upgrade.md](Upgrade.md).
 
 Complete the following steps to set up Envoy correctly in your environment.
 
-## Enterprise App
+## App registration
 
-Envoy retrieves user and group membership information from Microsoft Entra ID via Microsoft Mg Graph. It uses the Microsoft.Graph.Authentication, Microsoft.Graph.Groups, and Microsoft.Graph.Users modules to access and query directory data. Envoy uses Enterprise App **Microsoft Graph Command Line Tools** with the appropriate Graph API permissions.
+Envoy retrieves user and group membership information from Microsoft Entra ID via Microsoft Graph. It uses the Microsoft.Graph.Authentication, Microsoft.Graph.Groups, and Microsoft.Graph.Users modules to access and query directory data. Envoy requires an App Registration with the appropriate Graph API permissions.
 
-**1. Modify Enterprise App permissions:**
+**1. Create the App registration:** Go to https://entra.microsoft.com/ -> Identity -> Applications -> App registrations -> New registration.
 
-Verify whether the permissions have already been granted to the Enterprise Application. If they haven't been assigned yet, we need to initiate the assignment and grant admin consent. If the app is not found in Entra ID this means the app has never been used. You could trigger the creation of the Enterprise App while execution option 1 or option 2 which are shown below.
+![EntraAppReg1](Images/AppReg1.png)
 
-https://entra.microsoft.com/ -> Enterprise Apps -> **Microsoft Graph Command Line Tools** .
+**2. Fill in the desired App registration name:** For example Envoy. Select Single tenant and configure a redirect URI (http://localhost). Finally click Create.
 
-> [!NOTE]
-> The Enterprise App could sometimes be found under name **Microsoft Graph PowerShell** with Application ID **14d82eec-204b-4c2f-b7e8-296a70dab67e**. Verify by looking for the Application ID.
+![EntraAppReg2](Images/AppReg2.png)
 
-![EnterpriseApp1](Images/EnterpriseApp1.png)
+**3. Enable Public Client flows:** Make sure to enable Public client flows.
+
+![EntraAppReg3](Images/AppReg3.png)
+
+**4. Set required API permissions:** Microsoft Graph
+  -	Group.Read.All (Application)
+  -	GroupMember.Read.All (Application)
+  -	User.Read (Delegated)
+  -	User.Read.All (Application)
+
+  Make sure to **Grant admin consent**.
+
+![EntraAppReg4](Images/AppReg4.png)
+
 
 **Manual trigger:**
 
 Option 1: When Envoy is launched from a test or admin machine, an interactive permission prompt will automatically appear. These permissions must be granted for proper functionality.
 
-Option 2: Run the command below from a test or admin device to authenticate with Microsoft Graph. Ensure your account has the necessary Entra ID permissions, such as Application Administrator.
+Option 2: Run the command below from a test or admin device to authenticate with Microsoft Graph. Ensure your account has the necessary Entra ID permissions, such as Application Administrator. Fill in the ClientId from the App Registration and TenantId.
 
 ```
 # Install and Import required modules
@@ -531,13 +559,12 @@ Option 2: Run the command below from a test or admin device to authenticate with
 }
 
 # Connect to Entra ID using Microsoft Graph delegated permissions
-Connect-MgGraph -Scopes "User.Read.All", "Group.Read.All", "GroupMember.Read.All"
-
+Connect-MgGraph -ClientId "eccfcb90-****-****-*********" -TenantId "42ba3ed1-a****-****-*************" -Scopes "User.Read.All","Group.Read.All","GroupMember.Read.All" -NoWelcome
 ```
 
 This will result in the following Interactive popup. Accept the permissions and grant admin consent.
 
-![EnterpriseApp2](Images/EnterpriseApp2.png)
+![AppReg5](Images/AppReg5.png)
 
 
 ## Install Envoy
@@ -639,13 +666,3 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
-
-
-
-
-
-
-
-
-
-
