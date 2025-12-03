@@ -16,7 +16,7 @@ Envoy retrieves user and group membership information from Microsoft Entra ID vi
 
 **2. Fill in the desired App registration name:** For example Envoy. Select Single tenant and configure a redirect URI (http://localhost). Finally click Create.
 
-![EntraAppReg2](Images/AppReg2.png)
+![EntraAppReg2](Images/AppReg2-1.3.png)
 
 **3. Enable Public Client flows:** Make sure to enable Public client flows.
 
