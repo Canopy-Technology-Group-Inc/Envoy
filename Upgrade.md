@@ -52,7 +52,7 @@ Connect-MgGraph -ClientId "eccfcb90-****-****-*********" -TenantId "42ba3ed1-a**
 
 This will result in the following Interactive popup. Accept the permissions and grant admin consent.
 
-![AppReg5](Images/AppReg5.png)
+![AppReg5](Images/AppReg5-1.3.png)
 
 ## Implementation/testing
 1. Create the App registration with required permissions. Give admin consent
