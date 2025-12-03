@@ -54,6 +54,10 @@ This will result in the following Interactive popup. Accept the permissions and 
 
 ![AppReg5](Images/AppReg5-1.3.png)
 
+Additionally, you can approve requested permissions in **Admin consent requests**.
+
+![AppReg6](Images/AppReg6-1.3.png)
+
 ## Implementation/testing
 1. Create the App registration with required permissions. Give admin consent
 2. Tigger an authentication to MgGraph. Accept required permissions
