@@ -130,7 +130,7 @@ Watch the video on Youtube
 **Usage:**
 | Setting           | Values      | Description  |
 |------------------|-----|-----------------------|
-| TenantId      | ******** | Configure the desired TenantId letter.                   |
+| TenantId      | ******** | Configure the desired TenantId guid.                   |
 | AppId           | ******** | Configure the AppId. This is the AppRegistration which handles the authentication |
 
 &nbsp;
@@ -666,3 +666,4 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
