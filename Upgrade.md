@@ -58,6 +58,28 @@ Additionally, you can approve requested permissions in **Admin consent requests*
 
 ![AppReg6](Images/AppReg6-1.3.png)
 
+## Update Config.JSON
+
+Envoy versions starting with 1.3. require a tenant configuration in the JSON file.
+
+
+```
+"Tenant": [
+      {
+        "TenantId": "****-****-****-**********",
+        "AppId": "****-****-****-**********"
+      },
+    ],
+```
+
+**Usage:**
+| Setting           | Values      | Description  |
+|------------------|-----|-----------------------|
+| TenantId      | ******** | Configure the desired TenantId guid.                   |
+| AppId           | ******** | Configure the AppId. This is the AppRegistration which handles the authentication |
+
+&nbsp;
+
 ## Implementation/testing
 1. Create the App registration with required permissions. Give admin consent
 2. Tigger an authentication to MgGraph. Accept required permissions
