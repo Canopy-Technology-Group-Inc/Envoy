@@ -63,8 +63,8 @@ Watch the video on Youtube
 
 # 🔜 Roadmap
 - Support for nested groups in Entra ID (Investigating)
-- Support for using Entra ID Group ObjectID/GUID next to group name (Investigating)
 - Support for IconPath setting for Desktop Shortcuts and Start-Menu Shortcuts feature (Investigating)
+- Support for Workfolder and Arguments for Desktop Shortcuts and Start-Menu Shortcuts feature (Investigating)
 
   **Long term:**
 - Investigating for a more robust and centralized logging method/dashboard
@@ -90,7 +90,11 @@ Watch the video on Youtube
   - Enabled support for subfolders within the start-menu  
   - Implemented a new feature that lets you add and delete desktop shortcuts!
 
-- 1.3.001: Authentication for Graph has been updated to use an App Registration because Microsoft Graph CLI is being discontinued.
+- 1.3.001: This version includes several enhancements and bug fixes.
+  
+  - Authentication for Graph has been updated to use an App Registration because Microsoft Graph CLI is being discontinued.
+  - Added support for utilizing Entra ID Group ObjectID (GUID) alongside the group name 
+  - Fixed an issue where File Actions could be triggered even when a user was not part of a group
   
 &nbsp;
 
@@ -666,4 +670,5 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
