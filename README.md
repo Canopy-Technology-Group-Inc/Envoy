@@ -63,7 +63,6 @@ Watch the video on Youtube
 
 # 🔜 Roadmap
 - Support for nested groups in Entra ID (Investigating)
-- Support for IconPath setting for Desktop Shortcuts and Start-Menu Shortcuts feature (Investigating)
 - Support for Workfolder and Arguments for Desktop Shortcuts and Start-Menu Shortcuts feature (Investigating)
 
   **Long term:**
@@ -95,6 +94,7 @@ Watch the video on Youtube
   - Authentication for Graph has been updated to use an App Registration because Microsoft Graph CLI is being discontinued.
   - Added support for utilizing Entra ID Group ObjectID (GUID) alongside the group name 
   - Fixed an issue where File Actions could be triggered even when a user was not part of a group
+  - Support for IconPath setting for Desktop Shortcuts and Start-Menu Shortcuts feature
   
 &nbsp;
 
@@ -428,6 +428,7 @@ Watch the video on Youtube
         "executable": "C:\\Program Files\\Notepad++\\notepad++.exe",
         "shortcutFolder": "Utilities",
         "action": "Add",
+        "iconPath": "c:\application\logo.ico",
         "Group": ""
       } 
     ] 
@@ -439,6 +440,7 @@ Watch the video on Youtube
 | Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group name or Object ID. Users in this group will automatically receive this start-menu shortcut. Leave the group empty for "everyone". |
 | Shortcutfolder | e.g. "Utilities" | Supports subfolders within the Start-Menu. It requires at least 2 shortcuts per subfolder to actually show up. This is how Windows handles the start-menu. |
 | Action | Add or Remove | Define if the shortcut should be added or removed |
+| IconPath | C:\App\Logo.ico | Configure the desired path where the icon file is located |
 | Executable | C:\App\Start.exe | Shortcut target |
 
 &nbsp;
@@ -461,12 +463,14 @@ Watch the video on Youtube
         "shortcutName": "Command Prompt",
         "executable": "C:\\Windows\\System32\\cmd.exe",
         "action": "remove",
+        "iconPath": "c:\application\logo.ico",
         "Group": ""
       },
       {
         "shortcutName": "Remote Assistance",
         "executable": "C:\\Windows\\System32\\msra.exe",
         "action": "add",
+        "iconPath": "c:\application\logo.ico",
         "Group": ""
       }       
     ] 
@@ -477,6 +481,7 @@ Watch the video on Youtube
 | Shortcutname | Application Name | Defines the displayname the shortcut presents to the user |
 | Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group name or Object ID. Users in this group will automatically receive this start-menu shortcut. Leave the group empty for "everyone". |
 | Action | Add or Remove | Define if the shortcut should be added or removed |
+| IconPath | C:\App\Logo.ico | Configure the desired path where the icon file is located |
 | Executable | C:\App\Start.exe | Shortcut target |
 
 &nbsp;
@@ -670,6 +675,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
