@@ -195,7 +195,7 @@ Watch the video on Youtube
 |------------------|-----|-----------------------|
 | DriveLetter      | x,y,z, etc.  | Configure the desired drive mapping letter.                   |
 | UNCPath           |\\\\server.domain.local\\share  | Configure the desired UNC path. Don't forget double slashes for JSON. Supports %upn% and %username% variables. Under the hood, %username% maps to "$env:USERNAME" and %upn% maps to "whoami /upn" |
-| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will receive this drive mapping. Leave the group empty for "everyone". |
+| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group name or Object ID. Users in this group will receive this drive mapping. Leave the group empty for "everyone". |
 | Description | Text | Fill in a description. E.g. Sales Drive, Marketing Team. |
 | Priority | 1,2,3,4,5,6, etc | Conflicts with drive mappings can occur if a user is a member of multiple groups with the same drive letter as result. |Prio 1 is the lowest, higher wins. |
 | Action | Add or Remove | Define the action for the drive mapping |
@@ -260,7 +260,7 @@ Watch the video on Youtube
 | ValueName | Text | Fill in the desired value name |
 | ValueType | DWORD, STRING, BINARY, etc | Define the desired type |
 | ValueData | Data | Define the desired data. Decimal, text, path's, etc. |
-| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will receive this registry setting. Leave the group empty for "everyone". |
+| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group name or Object ID. Users in this group will receive this registry setting. Leave the group empty for "everyone". |
 | Action | Add or Remove | Define the action for the registry key |
 
 &nbsp;
@@ -299,7 +299,7 @@ Watch the video on Youtube
 |------------------|-----|-----------------------|
 | FilePath | C:\Folder\File.exe | Configure the file path |
 | Arguments | /qn, /silent, etc | Supports arguments belonging to the application |
-| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will automatically launch the configured application. Leave the group empty for "everyone". |
+| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group name or Object ID. Users in this group will automatically launch the configured application. Leave the group empty for "everyone". |
 
 &nbsp;
 
@@ -367,7 +367,7 @@ Watch the video on Youtube
 | SourcePath | C:\Folder\Source\File.ini | Being used for actions: copy, rename, move, delete. Supports parameters like %localappdata% |
 | DestinationPath | C:\Folder\Destination\File.ini | Being used for actions: copy, move |
 | NewName | FileName | Set the desired new file name. Being used for actions: rename |
-| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will automatically execute the file actions. Leave the group empty for "everyone". |
+| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group name or Object ID. Users in this group will automatically execute the file actions. Leave the group empty for "everyone". |
 
 &nbsp;
 
@@ -402,7 +402,7 @@ Watch the video on Youtube
 | Setting           | Values      | Description  |
 |------------------|-----|-----------------------|
 | PrinterPath | \\\\server\\printer | Configure the UNC path for the desired printer |
-| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will automatically add or remove the printer queue. Leave the group empty for "everyone". |
+| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group name or Object ID. Users in this group will automatically add or remove the printer queue. Leave the group empty for "everyone". |
 | Action | Add or Remove | Define if the printer queue should be added or removed |
 | DefaultPrinter | True | Sets the specified printer queue as the default printer in Windows. If this value is empty or set to False, no action is taken. If multiple printer queues are marked as default in the configuration, the last one listed will be applied as the default printer. |
 
@@ -436,7 +436,7 @@ Watch the video on Youtube
 | Setting           | Values      | Description  |
 |------------------|-----|-----------------------|
 | Shortcutname | Application Name | Defines the displayname the shortcut presents to the user |
-| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will automatically receive this start-menu shortcut. Leave the group empty for "everyone". |
+| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group name or Object ID. Users in this group will automatically receive this start-menu shortcut. Leave the group empty for "everyone". |
 | Shortcutfolder | e.g. "Utilities" | Supports subfolders within the Start-Menu. It requires at least 2 shortcuts per subfolder to actually show up. This is how Windows handles the start-menu. |
 | Action | Add or Remove | Define if the shortcut should be added or removed |
 | Executable | C:\App\Start.exe | Shortcut target |
@@ -475,7 +475,7 @@ Watch the video on Youtube
 | Setting           | Values      | Description  |
 |------------------|-----|-----------------------|
 | Shortcutname | Application Name | Defines the displayname the shortcut presents to the user |
-| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will automatically receive this start-menu shortcut. Leave the group empty for "everyone". |
+| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group name or Object ID. Users in this group will automatically receive this start-menu shortcut. Leave the group empty for "everyone". |
 | Action | Add or Remove | Define if the shortcut should be added or removed |
 | Executable | C:\App\Start.exe | Shortcut target |
 
@@ -670,5 +670,6 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
