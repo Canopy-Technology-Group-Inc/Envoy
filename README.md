@@ -533,21 +533,21 @@ Envoy retrieves user and group membership information from Microsoft Entra ID vi
 
 **1. Create the App registration:** Go to https://entra.microsoft.com/ -> Identity -> Applications -> App registrations -> New registration.
 
-![EntraAppReg1](Images/AppReg1.png)
+![EntraAppReg1](Images/AppReg1-1.3.png)
 
 **2. Fill in the desired App registration name:** For example Envoy. Select Single tenant and configure a redirect URI (http://localhost). Finally click Create.
 
-![EntraAppReg2](Images/AppReg2.png)
+![EntraAppReg2](Images/AppReg2-1.3.png)
 
 **3. Enable Public Client flows:** Make sure to enable Public client flows.
 
-![EntraAppReg3](Images/AppReg3.png)
+![EntraAppReg3](Images/AppReg4-1.3-v2.png)
 
 **4. Set required API permissions:** Microsoft Graph
-  -	Group.Read.All (Application)
-  -	GroupMember.Read.All (Application)
+  -	Group.Read.All (Delegated)
+  -	GroupMember.Read.All (Delegated)
   -	User.Read (Delegated)
-  -	User.Read.All (Application)
+  -	User.Read.All (Delegated)
 
   Make sure to **Grant admin consent**.
 
@@ -675,6 +675,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
