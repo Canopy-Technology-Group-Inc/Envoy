@@ -533,7 +533,7 @@ Envoy retrieves user and group membership information from Microsoft Entra ID vi
 
 **1. Create the App registration:** Go to https://entra.microsoft.com/ -> Identity -> Applications -> App registrations -> New registration.
 
-![EntraAppReg1](Images/AppReg1-1.3.png)
+![EntraAppReg1](Images/AppReg1.png)
 
 **2. Fill in the desired App registration name:** For example Envoy. Select Single tenant and configure a redirect URI (http://localhost). Finally click Create.
 
@@ -675,6 +675,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
