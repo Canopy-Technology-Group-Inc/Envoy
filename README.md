@@ -541,7 +541,7 @@ Envoy retrieves user and group membership information from Microsoft Entra ID vi
 
 **3. Enable Public Client flows:** Make sure to enable Public client flows.
 
-![EntraAppReg3](Images/AppReg4-1.3-v2.png)
+![EntraAppReg3](Images/AppReg3-1.3.png)
 
 **4. Set required API permissions:** Microsoft Graph
   -	Group.Read.All (Delegated)
@@ -551,8 +551,7 @@ Envoy retrieves user and group membership information from Microsoft Entra ID vi
 
   Make sure to **Grant admin consent**.
 
-![EntraAppReg4](Images/AppReg4.png)
-
+![EntraAppReg3](Images/AppReg4-1.3-v2.png)
 
 **Manual trigger:**
 
@@ -675,6 +674,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
