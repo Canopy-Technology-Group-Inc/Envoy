@@ -23,14 +23,14 @@ Envoy retrieves user and group membership information from Microsoft Entra ID vi
 ![EntraAppReg3](Images/AppReg3-1.3.png)
 
 **4. Set required API permissions:** Microsoft Graph
-  -	Group.Read.All (Application)
-  -	GroupMember.Read.All (Application)
+  -	Group.Read.All (Delegated)
+  -	GroupMember.Read.All (Delegated)
   -	User.Read (Delegated)
-  -	User.Read.All (Application)
+  -	User.Read.All (Delegated)
 
   Make sure to **Grant admin consent**.
 
-![EntraAppReg4](Images/AppReg4-1.3.png)
+![EntraAppReg4](Images/AppReg4-1.3-v2.png)
 
 
 **Manual trigger:**
