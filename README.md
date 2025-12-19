@@ -297,7 +297,7 @@ Watch the video on Youtube
 **Usage:**
 | Setting           | Values      | Description  |
 |------------------|-----|-----------------------|
-| FilePath | C:\Folder\File.exe | Configure the file path |
+| FilePath | C:\\Folder\\File.exe | Configure the file path |
 | Arguments | /qn, /silent, etc | Supports arguments belonging to the application |
 | Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group name or Object ID. Users in this group will automatically launch the configured application. Leave the group empty for "everyone". |
 
@@ -364,8 +364,8 @@ Watch the video on Youtube
 | Setting           | Values      | Description  |
 |------------------|-----|-----------------------|
 | FileActionType | copy, rename, move, delete | Configure the file action |
-| SourcePath | C:\Folder\Source\File.ini | Being used for actions: copy, rename, move, delete. Supports parameters like %localappdata% |
-| DestinationPath | C:\Folder\Destination\File.ini | Being used for actions: copy, move |
+| SourcePath | C:\\Folder\\Source\\File.ini | Being used for actions: copy, rename, move, delete. Supports parameters like %localappdata% |
+| DestinationPath | C:\\Folder\\Destination\\File.ini | Being used for actions: copy, move |
 | NewName | FileName | Set the desired new file name. Being used for actions: rename |
 | Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group name or Object ID. Users in this group will automatically execute the file actions. Leave the group empty for "everyone". |
 
@@ -441,9 +441,9 @@ Watch the video on Youtube
 | Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group name or Object ID. Users in this group will automatically receive this start-menu shortcut. Leave the group empty for "everyone". |
 | Shortcutfolder | e.g. "Utilities" | Supports subfolders within the Start-Menu. It requires at least 2 shortcuts per subfolder to actually show up. This is how Windows handles the start-menu. |
 | Action | Add or Remove | Define if the shortcut should be added or removed |
-| IconPath | C:\App\Logo.ico | Configure the desired path where the icon file is located |
-| StartIn | C:\App\ | Configure the working directory for the program when it launches. |
-| Executable | C:\App\Start.exe | Shortcut target |
+| IconPath | C:\\App\\Logo.ico | Configure the desired path where the icon file is located |
+| StartIn | C:\\App\\ | Configure the working directory for the program when it launches. |
+| Executable | C:\\App\\Start.exe | Shortcut target |
 
 &nbsp;
 
@@ -485,9 +485,9 @@ Watch the video on Youtube
 | Shortcutname | Application Name | Defines the displayname the shortcut presents to the user |
 | Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group name or Object ID. Users in this group will automatically receive this start-menu shortcut. Leave the group empty for "everyone". |
 | Action | Add or Remove | Define if the shortcut should be added or removed |
-| IconPath | C:\App\Logo.ico | Configure the desired path where the icon file is located |
-| StartIn | C:\App\ | Configure the working directory for the program when it launches. |
-| Executable | C:\App\Start.exe | Shortcut target |
+| IconPath | C:\\App\\Logo.ico | Configure the desired path where the icon file is located |
+| StartIn | C:\\App\\ | Configure the working directory for the program when it launches. |
+| Executable | C:\\App\\Start.exe | Shortcut target |
 
 &nbsp;
 
@@ -679,6 +679,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
