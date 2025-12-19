@@ -89,7 +89,7 @@ Watch the video on Youtube
   - Enabled support for subfolders within the start-menu  
   - Implemented a new feature that lets you add and delete desktop shortcuts!
 
-- 1.3.001: This version includes several enhancements and bug fixes.
+- 1.3.001: This version includes several enhancements and bug fixes. **BREAKING CHANGE!**
   
 	 - Authentication method has been updated to utilize MgGraph differently due to the retirement of Graph CLI  
 	 - Added support for using Entra ID Group ObjectID/GUID alongside the group name  
@@ -687,6 +687,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
