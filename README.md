@@ -91,10 +91,13 @@ Watch the video on Youtube
 
 - 1.3.001: This version includes several enhancements and bug fixes.
   
-  - Authentication for Graph has been updated to use an App Registration because Microsoft Graph CLI is being discontinued.
-  - Added support for utilizing Entra ID Group ObjectID (GUID) alongside the group name 
+	 - Authentication method has been updated to utilize MgGraph differently due to the retirement of Graph CLI  
+	 - Added support for using Entra ID Group ObjectID/GUID alongside the group name  
+	 - Added support for the IconPath setting in Desktop Shortcuts and Start-Menu Shortcuts features  
+	 - Added support for Arguments in Desktop Shortcuts and Start-Menu Shortcuts features  
+	 - Added support for StartIn path in Desktop and Start-Menu shortcuts
   - Fixed an issue where File Actions could be triggered even when a user was not part of a group
-  - Support for IconPath setting for Desktop Shortcuts and Start-Menu Shortcuts feature
+
   
 &nbsp;
 
@@ -425,11 +428,12 @@ Watch the video on Youtube
     "StartMenuEntry": [
       {
         "shortcutName": "Notepad++",
-        "executable": "C:\\Program Files\\Notepad++\\notepad++.exe",
+        "executable": "C:\\App1\Launch.exe",
+        "arguments": "-file \"C:\\App1\\Config.json\"",
+        "StartIn": "C:\\App1\"
         "shortcutFolder": "Utilities",
         "action": "Add",
-        "iconPath": "c:\\application\\logo.ico",
-        "StartIn": "c:\\application\\,
+        "iconPath": "c:\\App1\\logo.ico",
         "Group": ""
       } 
     ] 
@@ -444,6 +448,7 @@ Watch the video on Youtube
 | IconPath | C:\\App\\Logo.ico | Configure the desired path where the icon file is located |
 | StartIn | C:\\App\\ | Configure the working directory for the program when it launches. |
 | Executable | C:\\App\\Start.exe | Shortcut target |
+| Arguments | -file \"C:\\App1\\Config.json\" |	Optional command-line arguments passed to the executable |
 
 &nbsp;
 
@@ -464,6 +469,7 @@ Watch the video on Youtube
       {
         "shortcutName": "Command Prompt",
         "executable": "C:\\Windows\\System32\\cmd.exe",
+        "arguments": "",
         "action": "remove",
         "iconPath": "c:\\application\\logo.ico",
         "StartIn": "c:\\application\\,
@@ -472,9 +478,10 @@ Watch the video on Youtube
       {
         "shortcutName": "Remote Assistance",
         "executable": "C:\\Windows\\System32\\msra.exe",
+        "arguments": "-x \"\\\\server\\share\connect.rdp"",
         "action": "add",
         "iconPath": "c:\\application\\logo.ico",
-        "StartIn": "c:\\application\\,
+        "StartIn": "C:\\Windows\\System32\\,
         "Group": ""
       }       
     ] 
@@ -488,6 +495,7 @@ Watch the video on Youtube
 | IconPath | C:\\App\\Logo.ico | Configure the desired path where the icon file is located |
 | StartIn | C:\\App\\ | Configure the working directory for the program when it launches. |
 | Executable | C:\\App\\Start.exe | Shortcut target |
+| Arguments | -file \"C:\\App1\\Config.json\" |	Optional command-line arguments passed to the executable |
 
 &nbsp;
 
@@ -679,6 +687,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
