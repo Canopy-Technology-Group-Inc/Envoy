@@ -428,8 +428,8 @@ Watch the video on Youtube
         "executable": "C:\\Program Files\\Notepad++\\notepad++.exe",
         "shortcutFolder": "Utilities",
         "action": "Add",
-        "iconPath": "c:\application\logo.ico",
-        "StartIn": "c:\application\,
+        "iconPath": "c:\\application\\logo.ico",
+        "StartIn": "c:\\application\\,
         "Group": ""
       } 
     ] 
@@ -465,16 +465,16 @@ Watch the video on Youtube
         "shortcutName": "Command Prompt",
         "executable": "C:\\Windows\\System32\\cmd.exe",
         "action": "remove",
-        "iconPath": "c:\application\logo.ico",
-        "StartIn": "c:\application\,
+        "iconPath": "c:\\application\\logo.ico",
+        "StartIn": "c:\\application\\,
         "Group": ""
       },
       {
         "shortcutName": "Remote Assistance",
         "executable": "C:\\Windows\\System32\\msra.exe",
         "action": "add",
-        "iconPath": "c:\application\logo.ico",
-        "StartIn": "c:\application\,
+        "iconPath": "c:\\application\\logo.ico",
+        "StartIn": "c:\\application\\,
         "Group": ""
       }       
     ] 
@@ -679,6 +679,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
