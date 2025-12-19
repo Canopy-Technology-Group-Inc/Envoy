@@ -63,7 +63,6 @@ Watch the video on Youtube
 
 # 🔜 Roadmap
 - Support for nested groups in Entra ID (Investigating)
-- Support for Workfolder and Arguments for Desktop Shortcuts and Start-Menu Shortcuts feature (Investigating)
 
   **Long term:**
 - Investigating for a more robust and centralized logging method/dashboard
@@ -687,6 +686,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
