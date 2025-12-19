@@ -429,6 +429,7 @@ Watch the video on Youtube
         "shortcutFolder": "Utilities",
         "action": "Add",
         "iconPath": "c:\application\logo.ico",
+        "StartIn": "c:\application\,
         "Group": ""
       } 
     ] 
@@ -441,6 +442,7 @@ Watch the video on Youtube
 | Shortcutfolder | e.g. "Utilities" | Supports subfolders within the Start-Menu. It requires at least 2 shortcuts per subfolder to actually show up. This is how Windows handles the start-menu. |
 | Action | Add or Remove | Define if the shortcut should be added or removed |
 | IconPath | C:\App\Logo.ico | Configure the desired path where the icon file is located |
+| StartIn | C:\App\ | Configure the working directory for the program when it launches. |
 | Executable | C:\App\Start.exe | Shortcut target |
 
 &nbsp;
@@ -464,6 +466,7 @@ Watch the video on Youtube
         "executable": "C:\\Windows\\System32\\cmd.exe",
         "action": "remove",
         "iconPath": "c:\application\logo.ico",
+        "StartIn": "c:\application\,
         "Group": ""
       },
       {
@@ -471,6 +474,7 @@ Watch the video on Youtube
         "executable": "C:\\Windows\\System32\\msra.exe",
         "action": "add",
         "iconPath": "c:\application\logo.ico",
+        "StartIn": "c:\application\,
         "Group": ""
       }       
     ] 
@@ -482,6 +486,7 @@ Watch the video on Youtube
 | Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group name or Object ID. Users in this group will automatically receive this start-menu shortcut. Leave the group empty for "everyone". |
 | Action | Add or Remove | Define if the shortcut should be added or removed |
 | IconPath | C:\App\Logo.ico | Configure the desired path where the icon file is located |
+| StartIn | C:\App\ | Configure the working directory for the program when it launches. |
 | Executable | C:\App\Start.exe | Shortcut target |
 
 &nbsp;
@@ -674,6 +679,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
