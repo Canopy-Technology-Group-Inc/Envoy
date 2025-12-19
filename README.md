@@ -28,6 +28,7 @@ Watch the video on Youtube
 - [🛑 Known issues](#-known-issues)
 - [💥 Functions](#-functions)
     - [📰 Write-Log](#-write-log)
+    - [🔑 Tenant Configuration](#-tenant-configuration)
     - [📁 Deploy-DriveMappings](#-deploy-drivemappings)
     - [📘 Deploy-RegistryKeys](#-deploy-registrykeys)
     - [⏳ Deploy-Executables](#-deploy-executables)
@@ -36,11 +37,10 @@ Watch the video on Youtube
     - [➡️ Deploy-StartMenuEntry](#️-deploy-startmenuentry)
     - [➡️ Deploy-DesktopShortcut](#️-deploy-desktopshortcut)
   - [✅ Execution](#-execution)
-  - [✅ Delayed Execution](#-delayed-execution)
   - [🔃 Envoy Refresh](#-envoy-refresh)
   - [⚠️ Dependencies](#️-dependencies)
 - [💻 Installation](#-installation)
-  - [Enterprise App](#enterprise-app)
+  - [App registration](#app-registration)
   - [Install Envoy](#install-envoy)
   - [Configure Envoy](#configure-envoy)
   - [Centralized distribution](#centralized-distribution)
@@ -57,21 +57,16 @@ Watch the video on Youtube
 
 - **Microsoft Graph Authentication**: The script uses the `Microsoft.Graph` modules to interact with Microsoft Graph APIs.
 - **Configuration File**: Reads settings from `Config.json` located at `C:\ProgramData\Envoy\Config.json`.
-- **Authentication**: Connects to Microsoft Graph using **Microsoft Graph Command Line Tools** public endpoint.
+- **Authentication**: Connects to Microsoft Graph using app App Registration.
 
 &nbsp;
 
 # 🔜 Roadmap
-- Modifications to the Authentication approach since Microsoft Graph CLI will be retired August 28th, 2026 (Investigating)
 - Support for nested groups in Entra ID (Investigating)
-- Support for using Entra ID Group ObjectID/GUID next to group name (Investigating)
-- Support for IconPath setting for Desktop Shortcuts and Start-Menu Shortcuts feature (Investigating)
 
   **Long term:**
 - Investigating for a more robust and centralized logging method/dashboard
-- Multiple Entra Groups per item/block
-- Default tenant selection: When a user is in multiple Tenants signed in, the user gets a sign-in prompt, asking to choose the tenant. Figure out if we can force the tenant selection (Investigating).
-  
+- Multiple Entra Groups per item/block  
   
   &nbsp;
 
@@ -93,6 +88,16 @@ Watch the video on Youtube
   - Enabled support for subfolders within the start-menu  
   - Implemented a new feature that lets you add and delete desktop shortcuts!
 
+- 1.3.001: This version includes several enhancements and bug fixes. **BREAKING CHANGE!**
+  
+	 - Authentication method has been updated to utilize MgGraph differently due to the retirement of Graph CLI  
+	 - Added support for using Entra ID Group ObjectID/GUID alongside the group name  
+	 - Added support for the IconPath setting in Desktop Shortcuts and Start-Menu Shortcuts features  
+	 - Added support for Arguments in Desktop Shortcuts and Start-Menu Shortcuts features  
+	 - Added support for StartIn path in Desktop and Start-Menu shortcuts
+  - Fixed an issue where File Actions could be triggered even when a user was not part of a group
+
+  
 &nbsp;
 
 # 🛑 Known issues
@@ -107,6 +112,32 @@ Watch the video on Youtube
 - **Purpose:** Logs messages to a user-specific log file located at `C:\ProgramData\Envoy\Logging\<username>\User.log`.
 
 - **Key Features:** Ensures the log directory exists and appends timestamped log entries.
+
+&nbsp;
+
+### 🔑 Tenant Configuration
+
+**Purpose**: Being used to configure the Entra ID connection.
+
+**Key Features:** Used for TenantId and ApplicationId parameters.
+
+
+
+
+```
+"Tenant": [
+      {
+        "TenantId": "****-****-****-**********",
+        "AppId": "****-****-****-**********"
+      },
+    ],
+```
+
+**Usage:**
+| Setting           | Values      | Description  |
+|------------------|-----|-----------------------|
+| TenantId      | ******** | Configure the desired TenantId guid.                   |
+| AppId           | ******** | Configure the AppId. This is the AppRegistration which handles the authentication |
 
 &nbsp;
 
@@ -166,7 +197,7 @@ Watch the video on Youtube
 |------------------|-----|-----------------------|
 | DriveLetter      | x,y,z, etc.  | Configure the desired drive mapping letter.                   |
 | UNCPath           |\\\\server.domain.local\\share  | Configure the desired UNC path. Don't forget double slashes for JSON. Supports %upn% and %username% variables. Under the hood, %username% maps to "$env:USERNAME" and %upn% maps to "whoami /upn" |
-| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will receive this drive mapping. Leave the group empty for "everyone". |
+| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group name or Object ID. Users in this group will receive this drive mapping. Leave the group empty for "everyone". |
 | Description | Text | Fill in a description. E.g. Sales Drive, Marketing Team. |
 | Priority | 1,2,3,4,5,6, etc | Conflicts with drive mappings can occur if a user is a member of multiple groups with the same drive letter as result. |Prio 1 is the lowest, higher wins. |
 | Action | Add or Remove | Define the action for the drive mapping |
@@ -231,7 +262,7 @@ Watch the video on Youtube
 | ValueName | Text | Fill in the desired value name |
 | ValueType | DWORD, STRING, BINARY, etc | Define the desired type |
 | ValueData | Data | Define the desired data. Decimal, text, path's, etc. |
-| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will receive this registry setting. Leave the group empty for "everyone". |
+| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group name or Object ID. Users in this group will receive this registry setting. Leave the group empty for "everyone". |
 | Action | Add or Remove | Define the action for the registry key |
 
 &nbsp;
@@ -268,9 +299,9 @@ Watch the video on Youtube
 **Usage:**
 | Setting           | Values      | Description  |
 |------------------|-----|-----------------------|
-| FilePath | C:\Folder\File.exe | Configure the file path |
+| FilePath | C:\\Folder\\File.exe | Configure the file path |
 | Arguments | /qn, /silent, etc | Supports arguments belonging to the application |
-| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will automatically launch the configured application. Leave the group empty for "everyone". |
+| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group name or Object ID. Users in this group will automatically launch the configured application. Leave the group empty for "everyone". |
 
 &nbsp;
 
@@ -335,10 +366,10 @@ Watch the video on Youtube
 | Setting           | Values      | Description  |
 |------------------|-----|-----------------------|
 | FileActionType | copy, rename, move, delete | Configure the file action |
-| SourcePath | C:\Folder\Source\File.ini | Being used for actions: copy, rename, move, delete. Supports parameters like %localappdata% |
-| DestinationPath | C:\Folder\Destination\File.ini | Being used for actions: copy, move |
+| SourcePath | C:\\Folder\\Source\\File.ini | Being used for actions: copy, rename, move, delete. Supports parameters like %localappdata% |
+| DestinationPath | C:\\Folder\\Destination\\File.ini | Being used for actions: copy, move |
 | NewName | FileName | Set the desired new file name. Being used for actions: rename |
-| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will automatically execute the file actions. Leave the group empty for "everyone". |
+| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group name or Object ID. Users in this group will automatically execute the file actions. Leave the group empty for "everyone". |
 
 &nbsp;
 
@@ -373,7 +404,7 @@ Watch the video on Youtube
 | Setting           | Values      | Description  |
 |------------------|-----|-----------------------|
 | PrinterPath | \\\\server\\printer | Configure the UNC path for the desired printer |
-| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will automatically add or remove the printer queue. Leave the group empty for "everyone". |
+| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group name or Object ID. Users in this group will automatically add or remove the printer queue. Leave the group empty for "everyone". |
 | Action | Add or Remove | Define if the printer queue should be added or removed |
 | DefaultPrinter | True | Sets the specified printer queue as the default printer in Windows. If this value is empty or set to False, no action is taken. If multiple printer queues are marked as default in the configuration, the last one listed will be applied as the default printer. |
 
@@ -396,9 +427,12 @@ Watch the video on Youtube
     "StartMenuEntry": [
       {
         "shortcutName": "Notepad++",
-        "executable": "C:\\Program Files\\Notepad++\\notepad++.exe",
+        "executable": "C:\\App1\Launch.exe",
+        "arguments": "-file \"C:\\App1\\Config.json\"",
+        "StartIn": "C:\\App1\"
         "shortcutFolder": "Utilities",
         "action": "Add",
+        "iconPath": "c:\\App1\\logo.ico",
         "Group": ""
       } 
     ] 
@@ -407,10 +441,13 @@ Watch the video on Youtube
 | Setting           | Values      | Description  |
 |------------------|-----|-----------------------|
 | Shortcutname | Application Name | Defines the displayname the shortcut presents to the user |
-| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will automatically receive this start-menu shortcut. Leave the group empty for "everyone". |
+| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group name or Object ID. Users in this group will automatically receive this start-menu shortcut. Leave the group empty for "everyone". |
 | Shortcutfolder | e.g. "Utilities" | Supports subfolders within the Start-Menu. It requires at least 2 shortcuts per subfolder to actually show up. This is how Windows handles the start-menu. |
 | Action | Add or Remove | Define if the shortcut should be added or removed |
-| Executable | C:\App\Start.exe | Shortcut target |
+| IconPath | C:\\App\\Logo.ico | Configure the desired path where the icon file is located |
+| StartIn | C:\\App\\ | Configure the working directory for the program when it launches. |
+| Executable | C:\\App\\Start.exe | Shortcut target |
+| Arguments | -file \"C:\\App1\\Config.json\" |	Optional command-line arguments passed to the executable |
 
 &nbsp;
 
@@ -431,13 +468,19 @@ Watch the video on Youtube
       {
         "shortcutName": "Command Prompt",
         "executable": "C:\\Windows\\System32\\cmd.exe",
+        "arguments": "",
         "action": "remove",
+        "iconPath": "c:\\application\\logo.ico",
+        "StartIn": "c:\\application\\,
         "Group": ""
       },
       {
         "shortcutName": "Remote Assistance",
         "executable": "C:\\Windows\\System32\\msra.exe",
+        "arguments": "-x \"\\\\server\\share\connect.rdp"",
         "action": "add",
+        "iconPath": "c:\\application\\logo.ico",
+        "StartIn": "C:\\Windows\\System32\\,
         "Group": ""
       }       
     ] 
@@ -446,9 +489,12 @@ Watch the video on Youtube
 | Setting           | Values      | Description  |
 |------------------|-----|-----------------------|
 | Shortcutname | Application Name | Defines the displayname the shortcut presents to the user |
-| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group. Users in this group will automatically receive this start-menu shortcut. Leave the group empty for "everyone". |
+| Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group name or Object ID. Users in this group will automatically receive this start-menu shortcut. Leave the group empty for "everyone". |
 | Action | Add or Remove | Define if the shortcut should be added or removed |
-| Executable | C:\App\Start.exe | Shortcut target |
+| IconPath | C:\\App\\Logo.ico | Configure the desired path where the icon file is located |
+| StartIn | C:\\App\\ | Configure the working directory for the program when it launches. |
+| Executable | C:\\App\\Start.exe | Shortcut target |
+| Arguments | -file \"C:\\App1\\Config.json\" |	Optional command-line arguments passed to the executable |
 
 &nbsp;
 
@@ -464,15 +510,6 @@ The script executes the following tasks sequentially while logging on. The sched
 6. **Start-Menu shortcut**: Execute `Deploy-StartMenuEntry` to add shortcuts.
 7. **Desktop shortcut**: Execute `Deploy-DesktopShortcut` to add shortcuts.
 8. **All functions**: Execute `Invoke-UEMDeployment` to manage all functions at once.
-
-&nbsp;
-
-## ✅ Delayed Execution
-
-
-If you need to implement a delayed execution in your environment, you can customize the code accordingly. Locate `$delaySeconds` in the `Envoy-logon.ps1` file. Set the desired delay and remove any hashtags associated with the delay (which is disabled by default).
-
-In recent releases, `Envoy-Logon.ps1` has been replaced by `Envoy-logon.exe`. Altering the `Envoy-logon.ps1` is no longer effective in these updated versions because it is embedded within the executable. The standard configuration appears to be adequate for the majority of organizations.
 
 &nbsp;
 
@@ -495,33 +532,44 @@ Requires the following PowerShell modules. Installation will be handled by the M
 # 💻 Installation
 
 > [!NOTE]
-> Installation steps for previous versions starting with 1.1.* can be found [here](https://github.com/j0eyv/Envoy/blob/1.1.-versions/README.md).
+> Installation steps for previous versions starting with 1.1.* can be found [here](https://github.com/j0eyv/Envoy/blob/1.1.-versions/README.md). Installation steps for versions starting with 1.2.* can be found [here](https://github.com/j0eyv/Envoy/blob/1.2.-versions/README.md).
 
 > [!IMPORTANT]
-> If you are upgrading from version 1.1.* to 1.2.*, please be aware that this release introduces breaking changes if not followed correctly! See [Upgrade.md](Upgrade.md).
+> If you are upgrading from version 1.2.* to 1.3.*, please be aware that this release introduces breaking changes if not followed correctly! See [Upgrade.md](Upgrade.md).
 
 Complete the following steps to set up Envoy correctly in your environment.
 
-## Enterprise App
+## App registration
 
-Envoy retrieves user and group membership information from Microsoft Entra ID via Microsoft Mg Graph. It uses the Microsoft.Graph.Authentication, Microsoft.Graph.Groups, and Microsoft.Graph.Users modules to access and query directory data. Envoy uses Enterprise App **Microsoft Graph Command Line Tools** with the appropriate Graph API permissions.
+Envoy retrieves user and group membership information from Microsoft Entra ID via Microsoft Graph. It uses the Microsoft.Graph.Authentication, Microsoft.Graph.Groups, and Microsoft.Graph.Users modules to access and query directory data. Envoy requires an App Registration with the appropriate Graph API permissions.
 
-**1. Modify Enterprise App permissions:**
+**1. Create the App registration:** Go to https://entra.microsoft.com/ -> Identity -> Applications -> App registrations -> New registration.
 
-Verify whether the permissions have already been granted to the Enterprise Application. If they haven't been assigned yet, we need to initiate the assignment and grant admin consent. If the app is not found in Entra ID this means the app has never been used. You could trigger the creation of the Enterprise App while execution option 1 or option 2 which are shown below.
+![EntraAppReg1](Images/AppReg1.png)
 
-https://entra.microsoft.com/ -> Enterprise Apps -> **Microsoft Graph Command Line Tools** .
+**2. Fill in the desired App registration name:** For example Envoy. Select Single tenant and configure a redirect URI (http://localhost). Finally click Create.
 
-> [!NOTE]
-> The Enterprise App could sometimes be found under name **Microsoft Graph PowerShell** with Application ID **14d82eec-204b-4c2f-b7e8-296a70dab67e**. Verify by looking for the Application ID.
+![EntraAppReg2](Images/AppReg2-1.3.png)
 
-![EnterpriseApp1](Images/EnterpriseApp1.png)
+**3. Enable Public Client flows:** Make sure to enable Public client flows.
+
+![EntraAppReg3](Images/AppReg3-1.3.png)
+
+**4. Set required API permissions:** Microsoft Graph
+  -	Group.Read.All (Delegated)
+  -	GroupMember.Read.All (Delegated)
+  -	User.Read (Delegated)
+  -	User.Read.All (Delegated)
+
+  Make sure to **Grant admin consent**.
+
+![EntraAppReg3](Images/AppReg4-1.3-v2.png)
 
 **Manual trigger:**
 
 Option 1: When Envoy is launched from a test or admin machine, an interactive permission prompt will automatically appear. These permissions must be granted for proper functionality.
 
-Option 2: Run the command below from a test or admin device to authenticate with Microsoft Graph. Ensure your account has the necessary Entra ID permissions, such as Application Administrator.
+Option 2: Run the command below from a test or admin device to authenticate with Microsoft Graph. Ensure your account has the necessary Entra ID permissions, such as Application Administrator. Fill in the ClientId from the App Registration and TenantId.
 
 ```
 # Install and Import required modules
@@ -531,13 +579,12 @@ Option 2: Run the command below from a test or admin device to authenticate with
 }
 
 # Connect to Entra ID using Microsoft Graph delegated permissions
-Connect-MgGraph -Scopes "User.Read.All", "Group.Read.All", "GroupMember.Read.All"
-
+Connect-MgGraph -ClientId "eccfcb90-****-****-*********" -TenantId "42ba3ed1-a****-****-*************" -Scopes "User.Read.All","Group.Read.All","GroupMember.Read.All" -NoWelcome
 ```
 
 This will result in the following Interactive popup. Accept the permissions and grant admin consent.
 
-![EnterpriseApp2](Images/EnterpriseApp2.png)
+![AppReg5](Images/AppReg5.png)
 
 
 ## Install Envoy
@@ -639,6 +686,9 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
+
+
 
 
 
