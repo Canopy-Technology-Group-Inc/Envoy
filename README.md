@@ -101,7 +101,7 @@ Watch the video on Youtube
 &nbsp;
 
 # 🛑 Known issues
-- Updating to version 2.34 of the Microsoft Graph PowerShell modules may cause Graph connection issues, resulting in the following error: _WARNING: Note: Sign in by Web Account Manager (WAM) is enabled by default on Windows. If using an embedded terminal, the interactive browser window may be hidden behind other windows._ We are currently investigating the issue and exploring possible solutions or workarounds. To maintain a stable Envoy environment, we recommend not updating the PowerShell modules at this time. Version 2.27 is currently working without issues.
+- Updating to version 2.34 of the Microsoft Graph PowerShell modules may cause Graph connection issues, resulting in the following error: _WARNING: Note: Sign in by Web Account Manager (WAM) is enabled by default on Windows. If using an embedded terminal, the interactive browser window may be hidden behind other windows._ We are currently investigating the issue and exploring possible solutions or workarounds. To maintain a stable Envoy environment, we recommend not updating the PowerShell modules at this time. Until version 2.33 everything is currently working without issues.
 
 &nbsp;
 
@@ -686,6 +686,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
