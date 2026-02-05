@@ -65,7 +65,6 @@ Watch the video on Youtube
 # 🔜 Roadmap
 - Support for nested groups in Entra ID
 - IconIndex for Desktop and Start-Menu shortcuts
-- Friendlyname/Labels for Drive Mappings
 
   **Long term:**
 - Investigating for a more robust and centralized logging method/dashboard
