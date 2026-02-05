@@ -28,6 +28,7 @@ Watch the video on Youtube
 - [🛑 Known issues](#-known-issues)
 - [💥 Functions](#-functions)
     - [📰 Write-Log](#-write-log)
+    - [📰 Write-AdminLog](#-write-adminlog)
     - [🔑 Tenant Configuration](#-tenant-configuration)
     - [📁 Deploy-DriveMappings](#-deploy-drivemappings)
     - [📘 Deploy-RegistryKeys](#-deploy-registrykeys)
@@ -57,7 +58,7 @@ Watch the video on Youtube
 
 - **Microsoft Graph Authentication**: The script uses the `Microsoft.Graph` modules to interact with Microsoft Graph APIs.
 - **Configuration File**: Reads settings from `Config.json` located at `C:\ProgramData\Envoy\Config.json`.
-- **Authentication**: Connects to Microsoft Graph using app App Registration.
+- **Authentication**: Connects to Microsoft Graph using an App Registration.
 
 &nbsp;
 
@@ -91,19 +92,22 @@ Watch the video on Youtube
   - Implemented a new feature that lets you add and delete desktop shortcuts!
 
 - 1.3.001: This version includes several enhancements and bug fixes. **BREAKING CHANGE!**
-  
 	 - Authentication method has been updated to utilize MgGraph differently due to the retirement of Graph CLI  
 	 - Added support for using Entra ID Group ObjectID/GUID alongside the group name  
 	 - Added support for the IconPath setting in Desktop Shortcuts and Start-Menu Shortcuts features  
 	 - Added support for Arguments in Desktop Shortcuts and Start-Menu Shortcuts features  
 	 - Added support for StartIn path in Desktop and Start-Menu shortcuts
   - Fixed an issue where File Actions could be triggered even when a user was not part of a group
+  
+- 1.3.002: This release addresses issues with Microsoft.Graph.Authentication found in versions 2.34.0 and 2.35.0
+    - Authentication method has been modified to utilize 'Set-MgGraphOption -DisableLoginByWAM $true' if available
+    - Added functionality to store Admin logs alongside the existing User logs.
 
   
 &nbsp;
 
 # 🛑 Known issues
-- Updating to version 2.34 or 2.35 of the Microsoft Graph PowerShell modules may cause Graph connection issues, resulting in the following error: _WARNING: Note: Sign in by Web Account Manager (WAM) is enabled by default on Windows. If using an embedded terminal, the interactive browser window may be hidden behind other windows._ We are currently investigating the issue and exploring possible solutions or workarounds. To maintain a stable Envoy environment, we recommend not updating the PowerShell modules at this time. Until version 2.33 everything is currently working without issues. We're currently working with Microsoft to solve this issue in a future Microsoft Graph PowerShell release.
+- Microsoft Graph PowerShell modules (version 2.34 and 2.35) may cause Graph connection issues, resulting in the following error: _WARNING: Note: Sign in by Web Account Manager (WAM) is enabled by default on Windows. If using an embedded terminal, the interactive browser window may be hidden behind other windows._ To maintain stability within the Envoy environment, upgrading the PowerShell modules to version 2.35.1 is recommended, as this release includes the DisableLoginByWAM fix implemented in Envoy.
 
 &nbsp;
 
@@ -112,6 +116,12 @@ Watch the video on Youtube
 ### 📰 Write-Log
 
 - **Purpose:** Logs messages to a user-specific log file located at `C:\ProgramData\Envoy\Logging\<username>\User.log`.
+
+- **Key Features:** Ensures the log directory exists and appends timestamped log entries.
+
+### 📰 Write-AdminLog
+
+- **Purpose:** Logs messages to a admin-specific log file located at `C:\ProgramData\Envoy\Logging\<username>\Admin.log`.
 
 - **Key Features:** Ensures the log directory exists and appends timestamped log entries.
 
