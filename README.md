@@ -553,6 +553,10 @@ Envoy retrieves user and group membership information from Microsoft Entra ID vi
 
 ![EntraAppReg2](Images/AppReg2-1.3.png)
 
+Create the newly created App Registration and add another Redirect URI: Mobile and desktop applications -> ms-appx-web://Microsoft.AAD.BrokerPlugin/<your_client_id>
+
+![EntraAppReg5](Images/AppReg5-1.3-v2.png)
+
 **3. Enable Public Client flows:** Make sure to enable Public client flows.
 
 ![EntraAppReg3](Images/AppReg3-1.3.png)
@@ -688,6 +692,7 @@ Envoy is completely free to use! That said, building and improving it takes sign
 
 **Github Sponsors:** https://github.com/sponsors/j0eyv
 **Buy me a coffee**: https://buymeacoffee.com/j0eyv
+
 
 
 
