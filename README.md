@@ -103,7 +103,8 @@ Watch the video on Youtube
     - Authentication method has been modified to utilize 'Set-MgGraphOption -DisableLoginByWAM $true' if available
     - Added functionality to store Admin logs alongside the existing User logs.
 
-  
+- 1.3.003: Enhancements for Drive Mapping feature
+  - Drive mappings now supports friendly drive labels. The **Description** field is used to define the label.  
 &nbsp;
 
 # 🛑 Known issues
@@ -210,7 +211,7 @@ Watch the video on Youtube
 | DriveLetter      | x,y,z, etc.  | Configure the desired drive mapping letter.                   |
 | UNCPath           |\\\\server.domain.local\\share  | Configure the desired UNC path. Don't forget double slashes for JSON. Supports %upn% and %username% variables. Under the hood, %username% maps to "$env:USERNAME" and %upn% maps to "whoami /upn" |
 | Group | e.g. "GG - Sales Team" | Configure the desired Entra ID group name or Object ID. Users in this group will receive this drive mapping. Leave the group empty for "everyone". |
-| Description | Text | Fill in a description. E.g. Sales Drive, Marketing Team. |
+| Description | Text | Fill in a description. E.g. Sales Drive, Marketing Team. This is being used as friendlyname |
 | Priority | 1,2,3,4,5,6, etc | Conflicts with drive mappings can occur if a user is a member of multiple groups with the same drive letter as result. |Prio 1 is the lowest, higher wins. |
 | Action | Add or Remove | Define the action for the drive mapping |
 
