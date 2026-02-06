@@ -104,6 +104,10 @@ Watch the video on Youtube
 
 - 1.3.003: Enhancements for Drive Mapping feature
   - Drive mappings now supports friendly drive labels. The **Description** field is used to define the label.  
+
+- 1.3.004: Bug fix
+  - Small bug fix to prevent authentication pop-ups in non-managed user contexts.
+  
 &nbsp;
 
 # 🛑 Known issues
